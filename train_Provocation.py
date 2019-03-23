@@ -52,6 +52,7 @@ def FindInstrument():
     instrument = FindItem( instruments, Player.Backpack.Contains )
     return instrument
 
+
 def TrainProvocation():
     '''
     Trains Musicianship by using the instruments in the player's bag
