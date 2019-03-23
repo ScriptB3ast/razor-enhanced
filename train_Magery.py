@@ -47,7 +47,7 @@ def TrainMagery():
 
     Timer.Create( 'mageryTimer', 1 )
 
-    while Player.GetSkillValue( 'Magery' ) < 100 and not Player.IsGhost:
+    while not Player.IsGhost and Player.GetRealSkillValue( 'Magery' ) < Player.GetSkillCap( 'Magery' ):
         if not Timer.Check( 'mageryTimer' ):
             if Player.GetSkillValue( 'Magery' ) < 62.8:
                 spell = spellInfo[ 'Mana Drain' ]
