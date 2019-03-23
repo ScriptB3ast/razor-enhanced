@@ -64,6 +64,28 @@ def FindItem( itemID, container ):
             return foundItem
 
 
+def FindNumberOfItems( itemTypesToLookFor, items ):
+    '''
+    Recursively looks through a container for any items in the provided list
+    Returns the a dictionary with the number of items found from the list
+    '''
+    # Create the dictionary
+    numberOfItems = {}
+    for item in itemTypesToLookFor:
+        numberOfItems[ item ] = 0
+
+    # Iterate through each item in the given list
+    for item in items:
+        if item.ItemID in itemTypesToLookFor:
+            numberOfItems[ item.ItemID ] += item.Amount
+        elif item.IsContainer:
+            # If the list of items contains a contianer, look in that container for the items too
+            numberOfItemsInSubcontainer = FindNumberOfItems( itemTypesToLookFor, item.Contains )
+            for itemFromSubcontainer in numberOfItemsInSubcontainer:
+                numberOfItems[ itemFromSubcontainer ] += numberOfItemsInSubcontainer[ itemFromSubcontainer ]
+    return numberOfItems
+
+
 def FindBandage( container ):
     '''
     Uses FindItem to look through the player's backpack for a bandage
