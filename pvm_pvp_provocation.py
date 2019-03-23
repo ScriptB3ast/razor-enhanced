@@ -18,6 +18,7 @@ from System.Collections.Generic import List
 from Scripts.glossary.items import FindInstrument
 from Scripts.glossary.enemies import GetEnemyNotorieties, GetEnemies
 from Scripts.utilities.mobiles import GetEmptyMobileList
+from Scripts.utilities.colors import colors
 from Scripts import config
 
 enemiesProvodSharedValue = 'enemiesProvod'
@@ -99,7 +100,7 @@ def ProvoEnemies():
     enemies = GetEnemies( Mobiles, 0, 12, GetEnemyNotorieties(), IgnorePartyMembers = True )
 
     if len( enemies ) < 2:
-        Misc.SendMessage( 'Not enough enemies to provo!', 1100 )
+        Misc.SendMessage( 'Not enough enemies to provo!', colors[ 'red' ] )
     else:
         # Clear any previously selected target and the target queue
         Target.ClearLastandQueue()
@@ -119,7 +120,7 @@ def ProvoEnemies():
         elif Journal.SearchByType( 'What instrument shall you play?', 'Regular' ):
             instrument = FindInstrument( Player.Backpack )
             if instrument == None:
-                Misc.SendMessage( 'No instrument to provo with!', 1100 )
+                Misc.SendMessage( 'No instrument to provo with!', colors[ 'red' ] )
                 return
 
         Target.WaitForTarget( 2000, True )
