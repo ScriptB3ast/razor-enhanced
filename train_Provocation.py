@@ -13,8 +13,7 @@ from Scripts.glossary.items import FindInstrument
 from Scripts.utilities.colors import colors
 
 provocationTarget = Target.PromptTarget( 'Select enemy to train on' )
-Target.SetLast( provocationTarget )
-Mobiles.Message( Target.GetLast(), colors[ 'cyan' ], 'Selected for provocation training' )
+Mobiles.Message( provocationTarget, colors[ 'cyan' ], 'Selected for provocation training' )
 
 
 def TrainProvocation():
@@ -23,6 +22,7 @@ def TrainProvocation():
     Transitions to a new instrument if the one being used runs out of uses
     '''
     global provocationTimerMilliseconds
+    global provocationTarget
 
     Timer.Create( 'provocationTimer', 1 )
 
@@ -34,12 +34,12 @@ def TrainProvocation():
     Misc.SendMessage( 'Training with: %s' % instrument )
 
     while instrument != None and Player.GetSkillValue( 'Provocation' ) < 100 and not Player.IsGhost:
-        targetStillExists = Mobiles.FindBySerial( Target.GetLast() )
+        targetStillExists = Mobiles.FindBySerial( provocationTarget )
         if targetStillExists == None:
             Misc.SendMessage( 'Provo target has disappeared', colors[ 'red' ] )
             provocationTarget = Target.PromptTarget( 'Select enemy to train on' )
             Target.SetLast( provocationTarget )
-            Mobiles.Message( Target.GetLast(), colors[ 'cyan' ], 'Selected for provocation training' )
+            Mobiles.Message( provocationTarget, colors[ 'cyan' ], 'Selected for provocation training' )
         if not Timer.Check( 'provocationTimer' ):
             Journal.Clear()
             Player.UseSkill( 'Provocation' )
@@ -54,9 +54,9 @@ def TrainProvocation():
                     Misc.SendMessage( 'Training with: %s' % instrument )
                     Target.WaitForTarget( 2000, True )
                     Target.TargetExecute( instrument.Serial )
-            enemy = Target.GetLast()
+
             Target.WaitForTarget( 2000, True )
-            Target.TargetExecute( enemy )
+            Target.TargetExecute( provocationTarget )
             Target.WaitForTarget( 2000, True )
             Target.TargetExecute( Player.Serial )
             Target.SetLast( enemy )
