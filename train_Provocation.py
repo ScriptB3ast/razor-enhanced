@@ -14,7 +14,7 @@ from Scripts.utilities.colors import colors
 
 provocationTarget = Target.PromptTarget( 'Select enemy to train on' )
 Target.SetLast( provocationTarget )
-Mobiles.Message( Target.GetLast(), colors[ 'yellow' ], 'Selected for provocation training' )
+Mobiles.Message( Target.GetLast(), colors[ 'cyan' ], 'Selected for provocation training' )
 
 
 def TrainProvocation():
@@ -39,7 +39,7 @@ def TrainProvocation():
             Misc.SendMessage( 'Provo target has disappeared', colors[ 'red' ] )
             provocationTarget = Target.PromptTarget( 'Select enemy to train on' )
             Target.SetLast( provocationTarget )
-            Mobiles.Message( Target.GetLast(), colors[ 'yellow' ], 'Selected for provocation training' )
+            Mobiles.Message( Target.GetLast(), colors[ 'cyan' ], 'Selected for provocation training' )
         if not Timer.Check( 'provocationTimer' ):
             Journal.Clear()
             Player.UseSkill( 'Provocation' )
