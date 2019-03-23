@@ -66,17 +66,15 @@ def TrainMagery():
                 Misc.SendMessage( 'Ran out of regs for %s! These regs are needed: %s' % ( spell.name, reagentsNeededAsString ), 1100 )
                 break
 
-            if not Timer.Check( 'mageryTimer' ) and Player.Mana > spell.manaCost:
-                #Spells.CastMagery( spell.name )
-                Misc.SendMessage( 'cast %s' % spell.name )
-                Timer.Create( 'mageryTimer', spell.delayInMs + 100 ) # wait an extra 100 ms in case of latency
-            elif not CheckReagents( spell.name ):
-                Misc.SendMessage()
+            if Player.Mana > spell.manaCost:
+                Spells.CastMagery( spell.name )
 
-            # Target the cast spell on the player
-            Target.WaitForTarget( 10000, False )
-            Target.TargetExecute( Player.Serial )
-            Timer.Create( 'mageryTimer', mageryTimerMilliseconds )
+                # Wait an extra 100 ms in case of latency
+                Timer.Create( 'mageryTimer', spell.delayInMs + 100 )
+
+                # Target the cast spell on the player
+                Target.WaitForTarget( 2000, True )
+                Target.TargetExecute( Player.Serial )
 
 # Start the training
 TrainMagery()
