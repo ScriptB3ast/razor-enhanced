@@ -9,50 +9,11 @@ Description: Uses the instruments from the player's backpack and the selected ta
 
 provocationTimerMilliseconds = 10200
 
+from Scripts.glossary.items import FindInstrument
 from Scripts.utilities.colors import colors
 
 provocationTarget = Target.PromptTarget( 'Select enemy to train on' )
 Target.SetLast( provocationTarget )
-Mobiles.Message( Target.GetLast(), 52, 'Selected for provocation training' )
-
-def FindItem( itemsToLookFor, items ):
-    '''
-    Recursively looks through a container for any items in the provided list
-    Returns the first item found from the list
-    '''
-    # Iterate through each item in the given list
-    for item in items:
-        if item.ItemID in itemsToLookFor:
-            return item
-        elif item.IsContainer:
-            # If the list of items contains a contianer, look in that container for the item too
-            itemToReturn = FindItem( itemsToLookFor, item.Contains )
-            if itemToReturn != None:
-                return itemToReturn
-    return None
-
-
-def FindInstrument():
-    '''
-    Uses FindItem to find an instrument in the player's backpack
-    Returns the first instrument found
-    '''
-    instruments = [
-        0xe9c,  # Drum
-        0x2805,  # Flute
-        0xeb3,  # Lute
-
-        # Harps
-        0xeb2,  # Lap Harp
-        0xeb1,  # Standing Harp
-
-        # Tambourines
-        0xe9e,  # Tambourine
-        0xe9d   # Tambourine with red tassle
-    ]
-
-    instrument = FindItem( instruments, Player.Backpack.Contains )
-    return instrument
 Mobiles.Message( Target.GetLast(), colors[ 'yellow' ], 'Selected for provocation training' )
 
 
