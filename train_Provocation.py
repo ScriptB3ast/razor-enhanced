@@ -49,7 +49,9 @@ def TrainProvocation():
                 if instrument == None:
                     # No more instruments, stop the provo attempt
                     Target.Cancel()
-                    continue
+
+                    Misc.SendMessage( 'Ran out of instruments to train with', colors[ 'red' ] )
+                    return
                 else:
                     Misc.SendMessage( 'Training with: %s' % instrument )
                     Target.WaitForTarget( 2000, True )
@@ -65,9 +67,6 @@ def TrainProvocation():
 
         # Wait a little bit so that the while loop doesn't consume as much CPU
         Misc.Pause( 50 )
-
-    if instrument == None:
-        Misc.SendMessage( 'Ran out of instruments to train with', colors[ 'red' ] )
 
 # Start Training
 TrainProvocation()
