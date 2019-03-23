@@ -52,12 +52,12 @@ def TrainProvocation():
                     continue
                 else:
                     Misc.SendMessage( 'Training with: %s' % instrument )
-                    Target.WaitForTarget( 10000, False )
+                    Target.WaitForTarget( 2000, True )
                     Target.TargetExecute( instrument.Serial )
             enemy = Target.GetLast()
-            Target.WaitForTarget( 10000, False )
+            Target.WaitForTarget( 2000, True )
             Target.TargetExecute( enemy )
-            Target.WaitForTarget( 10000, False )
+            Target.WaitForTarget( 2000, True )
             Target.TargetExecute( Player.Serial )
             Target.SetLast( enemy )
 
