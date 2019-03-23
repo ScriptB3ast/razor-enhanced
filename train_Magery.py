@@ -7,6 +7,11 @@ Description: Uses the recommended spells from the UO Forever Wiki (https://www.u
     to level Magery to GM. Will also increase Meditation if the skill is set to Up and not maxed out while running
 '''
 
+# Change this to False if you want to use all of the reagents in your backpack
+saveReagentsForRecall = True
+# Change this to the number of recall spells you want to be able to cast
+numberOfRecallsToSaveFor = 3
+
 from Scripts.glossary.spells import reagents, spells
 from Scripts.utilities import colors
 
@@ -26,7 +31,7 @@ def FindReagents():
     return numberOfReagentsFound
 
 
-def CheckReagents( spellName ):
+def CheckReagents( spellName, numberOfCasts = 1 ):
     '''
     Checks if the necessary reagents are available in the player's backpack to use a spell
     '''
@@ -34,7 +39,7 @@ def CheckReagents( spellName ):
     reagentsInBackpack = FindReagents()
     reagentsNeeded = spellInfo[ spellName ].reagents
     for reagent in reagentsNeeded:
-        if reagentsInBackpack[ reagent.itemType ] == 0:
+        if reagentsInBackpack[ reagent.itemType ] < numberOfCasts:
             return False
     return True
 
@@ -49,6 +54,10 @@ def TrainMagery():
     Timer.Create( 'mageryTimer', 1 )
 
     while not Player.IsGhost and Player.GetRealSkillValue( 'Magery' ) < Player.GetSkillCap( 'Magery' ):
+        if saveReagentsForRecall and not CheckReagents( 'Recall', numberOfRecallsToSaveFor + 1 ):
+            Misc.SendMessage( 'Need to save reagents for recall!', colors[ 'red' ] )
+            return
+
         if not Timer.Check( 'mageryTimer' ):
             if Player.GetSkillValue( 'Magery' ) < 62.8:
                 spell = spellInfo[ 'Mana Drain' ]
