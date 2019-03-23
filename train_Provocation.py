@@ -102,6 +102,9 @@ def TrainProvocation():
 
             Timer.Create( 'provocationTimer', provocationTimerMilliseconds )
 
+        # Wait a little bit so that the while loop doesn't consume as much CPU
+        Misc.Pause( 50 )
+
     if instrument == None:
         Misc.SendMessage( 'Ran out of instruments to train with', colors[ 'red' ] )
 
