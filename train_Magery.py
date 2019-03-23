@@ -86,5 +86,8 @@ def TrainMagery():
                 Target.WaitForTarget( 2000, True )
                 Target.TargetExecute( Player.Serial )
 
+        # Wait a little bit so that the while loop doesn't consume as much CPU
+        Misc.Pause( 50 )
+
 # Start the training
 TrainMagery()
