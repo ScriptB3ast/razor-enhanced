@@ -3,7 +3,7 @@ Author: TheWarDoctor95
 Other Contributors:
 Last Contribution By: TheWarDoctor95 - March 14, 2019
 
-Description: Uses the selected target to train Animal Lore to GM
+Description: Uses the selected target to train Animal Lore to its cap
 '''
 
 animalLoreTimerMilliseconds = 1200
@@ -21,7 +21,7 @@ def TrainAnimalLore():
     Timer.Create( 'animalLoreTimer', 1 )
     targetStillExists = Mobiles.FindBySerial( animalLoreTarget )
 
-    while targetStillExists != None and not Player.IsGhost and Player.GetSkillValue( 'Animal Lore' ) < 100:
+    while targetStillExists != None and not Player.IsGhost and Player.GetRealSkillValue( 'Animal Lore' ) < Player.GetSkillCap( 'Animal Lore' ):
         if not Timer.Check( 'animalLoreTimer' ):
             Player.UseSkill( 'Animal Lore' )
             Target.WaitForTarget( 2000, True )
@@ -30,10 +30,10 @@ def TrainAnimalLore():
 
     if targetStillExists == None:
         Player.HeadMessage( 1100, 'Selected target for animal lore is gone' )
-    elif Player.GetSkillValue( 'Animal Lore' ) >= 100:
         Player.HeadMessage( 32, 'Animal Lore training complete!' )
     else:
         Player.HeadMessage( 0, 'Something happened.' )
+    elif Player.GetRealSkillValue( 'Animal Lore' ) >= Player.GetSkillCap( 'Animal Lore' ):
 
 # Start Training
 TrainAnimalLore()
