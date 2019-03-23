@@ -61,7 +61,8 @@ def TrainMagery():
                 reagentsNeededAsString = ''
                 for reagent in reagentsNeeded:
                     reagentsNeededAsString += reagent.name + ','
-                reagentsNeededAsString[ : -1 ] # Removes the extra comma from the string
+                # Remove the extra comma from the string
+                reagentsNeededAsString[ : -1 ]
                 Misc.SendMessage( 'Ran out of regs for %s! These regs are needed: %s' % ( spell.name, reagentsNeededAsString ), 1100 )
                 break
 
