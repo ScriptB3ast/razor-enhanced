@@ -14,7 +14,7 @@ mageryTimerMilliseconds = 6500
 
 def FindReagents():
     '''
-    Uses FindItem to find an the reagents in the player's backpack
+    Uses FindNumberOfItems to find an the reagents in the player's backpack
     Returns a dictionary of the reagents found
     '''
     global reagents
