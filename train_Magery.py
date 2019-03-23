@@ -8,6 +8,7 @@ Description: Uses the recommended spells from the UO Forever Wiki (https://www.u
 '''
 
 from Scripts.glossary.spells import reagents, spells
+from Scripts.utilities import colors
 
 mageryTimerMilliseconds = 6500
 
@@ -63,7 +64,7 @@ def TrainMagery():
                     reagentsNeededAsString += reagent.name + ','
                 # Remove the extra comma from the string
                 reagentsNeededAsString[ : -1 ]
-                Misc.SendMessage( 'Ran out of regs for %s! These regs are needed: %s' % ( spell.name, reagentsNeededAsString ), 1100 )
+                Misc.SendMessage( 'Ran out of regs for %s! These regs are needed: %s' % ( spell.name, reagentsNeededAsString ), colors[ 'red' ] )
                 break
 
             if Player.Mana > spell.manaCost:
