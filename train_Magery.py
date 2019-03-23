@@ -1,7 +1,7 @@
 '''
 Author: TheWarDoctor95
 Other Contributors:
-Last Contribution By: TheWarDoctor95 - March 13, 2019
+Last Contribution By: TheWarDoctor95 - March 23, 2019
 
 Description: Uses the recommended spells from the UO Forever Wiki (https://www.uoforum.com/wiki/index.php/Magery)
     to level Magery to GM. Will also increase Meditation if the skill is set to Up and not maxed out while running
