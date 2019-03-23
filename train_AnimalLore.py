@@ -10,22 +10,22 @@ animalLoreTimerMilliseconds = 1200
 
 # Select what to run Animal Lore on
 animalLoreTarget = Target.PromptTarget( 'Select animal to train on' )
-Target.SetLast( animalLoreTarget )
-Mobiles.Message( Target.GetLast(), 52, 'Selected for animal lore training' )
+Mobiles.Message( animalLoreTarget, 52, 'Selected for animal lore training' )
 
 def TrainAnimalLore():
     '''
     Trains Animal Lore with the selected target
     '''
+    global animalLoreTarget
 
     Timer.Create( 'animalLoreTimer', 1 )
-    targetStillExists = Mobiles.FindBySerial( Target.GetLast() )
+    targetStillExists = Mobiles.FindBySerial( animalLoreTarget )
 
     while Player.GetSkillValue( 'Animal Lore' ) < 100 and targetStillExists != None and not Player.IsGhost:
         if not Timer.Check( 'animalLoreTimer' ):
             Player.UseSkill( 'Animal Lore' )
             Target.WaitForTarget( 10000, False )
-            Target.TargetExecute( Target.GetLast() )
+            Target.TargetExecute( animalLoreTarget )
             Timer.Create( 'animalLoreTimer', animalLoreTimerMilliseconds )
 
     if targetStillExists == None:
