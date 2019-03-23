@@ -9,6 +9,8 @@ Description: Uses the instruments from the player's backpack and the selected ta
 
 provocationTimerMilliseconds = 10200
 
+from Scripts.utilities.colors import colors
+
 provocationTarget = Target.PromptTarget( 'Select enemy to train on' )
 Target.SetLast( provocationTarget )
 Mobiles.Message( Target.GetLast(), 52, 'Selected for provocation training' )
@@ -51,6 +53,7 @@ def FindInstrument():
 
     instrument = FindItem( instruments, Player.Backpack.Contains )
     return instrument
+Mobiles.Message( Target.GetLast(), colors[ 'yellow' ], 'Selected for provocation training' )
 
 
 def TrainProvocation():
@@ -64,7 +67,7 @@ def TrainProvocation():
 
     instrument = FindInstrument()
     if instrument == None:
-        Misc.SendMessage( 'No instruments to train with', 1100 )
+        Misc.SendMessage( 'No instruments to train with', colors[ 'red' ] )
         return
 
     Misc.SendMessage( 'Training with: %s' % instrument )
@@ -72,10 +75,10 @@ def TrainProvocation():
     while instrument != None and Player.GetSkillValue( 'Provocation' ) < 100 and not Player.IsGhost:
         targetStillExists = Mobiles.FindBySerial( Target.GetLast() )
         if targetStillExists == None:
-            Misc.SendMessage( 'Provo target has disappeared', 1100 )
+            Misc.SendMessage( 'Provo target has disappeared', colors[ 'red' ] )
             provocationTarget = Target.PromptTarget( 'Select enemy to train on' )
             Target.SetLast( provocationTarget )
-            Mobiles.Message( Target.GetLast(), 52, 'Selected for provocation training' )
+            Mobiles.Message( Target.GetLast(), colors[ 'yellow' ], 'Selected for provocation training' )
         if not Timer.Check( 'provocationTimer' ):
             Journal.Clear()
             Player.UseSkill( 'Provocation' )
@@ -100,7 +103,7 @@ def TrainProvocation():
             Timer.Create( 'provocationTimer', provocationTimerMilliseconds )
 
     if instrument == None:
-        Misc.SendMessage( 'Ran out of instruments to train with', 1100 )
+        Misc.SendMessage( 'Ran out of instruments to train with', colors[ 'red' ] )
 
 # Start Training
 TrainProvocation()
