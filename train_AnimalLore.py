@@ -21,7 +21,7 @@ def TrainAnimalLore():
     Timer.Create( 'animalLoreTimer', 1 )
     targetStillExists = Mobiles.FindBySerial( animalLoreTarget )
 
-    while Player.GetSkillValue( 'Animal Lore' ) < 100 and targetStillExists != None and not Player.IsGhost:
+    while targetStillExists != None and not Player.IsGhost and Player.GetSkillValue( 'Animal Lore' ) < 100:
         if not Timer.Check( 'animalLoreTimer' ):
             Player.UseSkill( 'Animal Lore' )
             Target.WaitForTarget( 10000, False )
