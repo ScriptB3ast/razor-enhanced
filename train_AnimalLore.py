@@ -6,6 +6,8 @@ Last Contribution By: TheWarDoctor95 - March 14, 2019
 Description: Uses the selected target to train Animal Lore to its cap
 '''
 
+from Scripts.utilities.colors import colors
+
 animalLoreTimerMilliseconds = 1200
 
 # Select what to run Animal Lore on
@@ -29,11 +31,9 @@ def TrainAnimalLore():
             Timer.Create( 'animalLoreTimer', animalLoreTimerMilliseconds )
 
     if targetStillExists == None:
-        Player.HeadMessage( 1100, 'Selected target for animal lore is gone' )
-        Player.HeadMessage( 32, 'Animal Lore training complete!' )
-    else:
-        Player.HeadMessage( 0, 'Something happened.' )
+        Player.HeadMessage( colors[ 'red' ], 'Selected target for animal lore is gone' )
     elif Player.GetRealSkillValue( 'Animal Lore' ) >= Player.GetSkillCap( 'Animal Lore' ):
+        Player.HeadMessage( colors[ 'green' ], 'Animal Lore training complete!' )
 
 # Start Training
 TrainAnimalLore()
