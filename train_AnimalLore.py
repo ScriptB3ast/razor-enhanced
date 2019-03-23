@@ -24,7 +24,7 @@ def TrainAnimalLore():
     while targetStillExists != None and not Player.IsGhost and Player.GetSkillValue( 'Animal Lore' ) < 100:
         if not Timer.Check( 'animalLoreTimer' ):
             Player.UseSkill( 'Animal Lore' )
-            Target.WaitForTarget( 10000, False )
+            Target.WaitForTarget( 2000, True )
             Target.TargetExecute( animalLoreTarget )
             Timer.Create( 'animalLoreTimer', animalLoreTimerMilliseconds )
 
