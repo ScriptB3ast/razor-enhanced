@@ -92,11 +92,15 @@ def FindItem( itemID, container, color = -1 ):
             return foundItem
 
 
-def FindNumberOfItems( itemID, container ):
+def FindNumberOfItems( itemID, container, color = -1 ):
     '''
     Recursively looks through a container for any items in the provided list
     Returns the a dictionary with the number of items found from the list
     '''
+
+    ignoreColor = False
+    if color == -1:
+        ignoreColor = True
 
     # Create the dictionary
     numberOfItems = {}
@@ -107,7 +111,7 @@ def FindNumberOfItems( itemID, container ):
 
         # Populate numberOfItems
         for item in container.Contains:
-            if item.ItemID == itemID:
+            if item.ItemID == itemID and ( ignoreColor or item.Color == color ):
                 numberOfItems[ itemID ] += item.Amount
     elif isinstance( itemID, list ):
         # Initialize numberOfItems
@@ -116,7 +120,7 @@ def FindNumberOfItems( itemID, container ):
 
         # Populate numberOfItems
         for item in container.Contains:
-            if item.ItemID in itemID:
+            if item.ItemID in itemID and ( ignoreColor or item.Color == color ):
                 numberOfItems[ itemID ] += item.Amount
     else:
         raise ValueError( 'Unknown argument type for itemID passed to FindItem().', itemID, container )
