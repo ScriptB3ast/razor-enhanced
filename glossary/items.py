@@ -20,6 +20,8 @@ items = {
 
 
     ### Ingots ###
+    'iron ingot': Item( 'iron ingot', 0x1BF2, 0x0000, 'ingot', 0.1 ),
+    'dull copper ingot': Item( 'dull copper ingot', 0x1BF2, 0x0415, 'ingot', 0.1 ),
 
 
     ### Instruments ###
@@ -38,6 +40,7 @@ items = {
 
     ### Ores ###
     'iron ore': Item( 'iron ore', 0x19B9, 0x0000, 'ore', None ),
+    'dull copper ore': Item( 'dull copper ore', 0x19B9, 0x0415, 'ore', None ),
 
 
     ### Reagents ###
