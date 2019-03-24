@@ -81,7 +81,7 @@ def SelectEnemyToProvo( enemies ):
         enemiesToProvo = enemies
 
     # Select the enemy to provo
-    paragon = next( ( enemy for enemy in enemiesToProvo if re.search( 'paragon', enemy.Name ) != None ), None )
+    paragon = next( ( enemy for enemy in enemiesToProvo if enemy.Color == 1157 ), None )
     if paragon != None:
         return paragon
 
