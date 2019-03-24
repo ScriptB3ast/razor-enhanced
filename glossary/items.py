@@ -59,10 +59,10 @@ items = {
     'tool kit': Item( 'tool kit', 0x1EB8, 0x0000, 'tool', 1 )
 }
 
-instruments = { key: value for key, value in items.items() if value != None and value.category == 'instrument' }
-ores = { key: value for key, value in items.items() if value != None and value.category == 'ore' }
-reagents = { key: value for key, value in items.items() if value != None and value.category == 'reagent' }
-tools = { key: value for key, value in items.items() if value != None and value.category == 'tool' }
+instruments = { itemName: item for itemName, item in items.items() if item != None and item.category == 'instrument' }
+ores = { itemName: item for itemName, item in items.items() if item != None and item.category == 'ore' }
+reagents = { itemName: item for itemName, item in items.items() if item != None and item.category == 'reagent' }
+tools = { itemName: item for itemName, item in items.items() if item != None and item.category == 'tool' }
 
 
 def FindItem( itemID, container, color = -1 ):
