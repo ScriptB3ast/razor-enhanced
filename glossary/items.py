@@ -28,8 +28,8 @@ items = {
     'lute': Item( 'lute', 0x0EB3, 0x0000, 'instrument', None ),
 
     # Harps
-    'harpLap': Item( 'lap harp', 0x0EB2, 0x0000, 'instrument', None ),
-    'harpStanding': Item( 'standing harp', 0x0EB1, 0x0000, 'instrument', None ),
+    'lap harp': Item( 'lap harp', 0x0EB2, 0x0000, 'instrument', None ),
+    'standing harp': Item( 'standing harp', 0x0EB1, 0x0000, 'instrument', None ),
 
     # Tambourines
     'tambourine': Item( 'tambourine', 0x0E9E, 0x0000, 'instrument', None ),
@@ -37,7 +37,7 @@ items = {
 
 
     ### Ores ###
-    'oreIron': Item( 'iron ore', 0x19B9, 0x0000, 'ore', 9 ),
+    'iron ore': Item( 'iron ore', 0x19B9, 0x0000, 'ore', None ),
 
 
     ### Reagents ###
