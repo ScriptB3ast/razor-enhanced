@@ -87,24 +87,32 @@ def FindNumberOfItems( itemID, container ):
     numberOfItems = {}
 
     if isinstance( itemID, int ):
-        numberOfItems[ item ] = 0
-        foundItems = { item.ItemID: item.Amount for item in container.Contains if item.ItemID == itemID }
+        # Initialize numberOfItems
+        numberOfItems[ itemID ] = 0
+
+        # Populate numberOfItems
+        for item in container.Contains:
+            if item.ItemID == itemID:
+                numberOfItems[ itemID ] += item.Amount
     elif isinstance( itemID, list ):
-        for item in itemID:
-            numberOfItems[ item ] = 0
-        foundItems = { item.ItemID: item.Amount for item in container.Contains if item.ItemID in itemID }
+        # Initialize numberOfItems
+        for ID in itemID:
+            numberOfItems[ ID ] = 0
+
+        # Populate numberOfItems
+        for item in container.Contains:
+            if item.ItemID in itemID:
+                numberOfItems[ itemID ] += item.Amount
     else:
         raise ValueError( 'Unknown argument type for itemID passed to FindItem().', itemID, container )
-
-    # Add the contents found to the dictionary
-    numberOfItems = { itemID: numberOfItems.get( itemID, 0 ) + foundItems.get( itemID, 0 ) for itemID in set( numberOfItems ).union( foundItems ) }
 
     subcontainers = [ item for item in container.Contains if item.IsContainer ]
 
     # Iterate through each item in the given list
     for subcontainer in subcontainers:
         numberOfItemsInSubcontainer = FindNumberOfItems( itemID, subcontainer )
-        numberOfItems = { itemID: numberOfItems.get( itemID, 0 ) + numberOfItemsInSubcontainer.get( itemID, 0 ) for itemID in set( numberOfItems ).union( numberOfItemsInSubcontainer ) }
+        for ID in numberOfItems:
+            numberOfItems[ ID ] += numberOfItemsInSubcontainer[ ID ]
 
     return numberOfItems
 
