@@ -59,8 +59,8 @@ items = {
     'tool kit': Item( 'tool kit', 0x1EB8, 0x0000, 'tool', 1 )
 }
 
-ores = { key: value for key, value in items.items() if value != None and value.category == 'ore' }
 instruments = { key: value for key, value in items.items() if value != None and value.category == 'instrument' }
+ores = { key: value for key, value in items.items() if value != None and value.category == 'ore' }
 reagents = { key: value for key, value in items.items() if value != None and value.category == 'reagent' }
 tools = { key: value for key, value in items.items() if value != None and value.category == 'tool' }
 
