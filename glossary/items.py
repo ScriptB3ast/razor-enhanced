@@ -102,7 +102,7 @@ def FindNumberOfItems( itemID, container ):
 
     # Iterate through each item in the given list
     for subcontainer in subcontainers:
-        numberOfItemsInSubcontainer = FindNumberOfItems( itemID, container )
+        numberOfItemsInSubcontainer = FindNumberOfItems( itemID, subcontainer )
         numberOfItems = { itemID: numberOfItems.get( itemID, 0 ) + numberOfItemsInSubcontainer.get( itemID, 0 ) for itemID in set( numberOfItems ).union( numberOfItemsInSubcontainer ) }
 
     return numberOfItems
