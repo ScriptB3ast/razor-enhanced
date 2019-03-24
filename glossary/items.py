@@ -85,13 +85,14 @@ def FindNumberOfItems( itemID, container ):
 
     # Create the dictionary
     numberOfItems = {}
-    for item in itemIDsToLookFor:
-        numberOfItems[ item ] = 0
 
     if isinstance( itemID, int ):
-        foundItems = { item.ItemID: item for item in container.Contains if item.ItemID == itemID }
+        numberOfItems[ item ] = 0
+        foundItems = { item.ItemID: item.Amount for item in container.Contains if item.ItemID == itemID }
     elif isinstance( itemID, list ):
-        foundItems = { item.ItemID: item for item in container.Contains if item.ItemID in itemID }
+        for item in itemID:
+            numberOfItems[ item ] = 0
+        foundItems = { item.ItemID: item.Amount for item in container.Contains if item.ItemID in itemID }
     else:
         raise ValueError( 'Unknown argument type for itemID passed to FindItem().', itemID, container )
 
