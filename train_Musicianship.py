@@ -18,7 +18,7 @@ def FindItem( itemsToLookFor, items ):
         if item.ItemID in itemsToLookFor:
             return item
         elif item.IsContainer:
-            # If the list of items contains a contianer, look in that container for the item too
+            # If the list of items contains a container, look in that container for the item too
             itemToReturn = FindItem( itemsToLookFor, item.Contains )
             if itemToReturn != None:
                 return itemToReturn

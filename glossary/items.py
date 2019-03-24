@@ -92,7 +92,7 @@ def FindNumberOfItems( itemIDsToLookFor, items ):
         if item.ItemID in itemIDsToLookFor:
             numberOfItems[ item.ItemID ] += item.Amount
         elif item.IsContainer:
-            # If the list of items contains a contianer, look in that container for the items too
+            # If the list of items contains a container, look in that container for the items too
             numberOfItemsInSubcontainer = FindNumberOfItems( itemIDsToLookFor, item.Contains )
             for itemFromSubcontainer in numberOfItemsInSubcontainer:
                 numberOfItems[ itemFromSubcontainer ] += numberOfItemsInSubcontainer[ itemFromSubcontainer ]
