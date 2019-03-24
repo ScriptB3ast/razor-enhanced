@@ -65,16 +65,20 @@ reagents = { key: value for key, value in items.items() if value != None and val
 tools = { key: value for key, value in items.items() if value != None and value.category == 'tool' }
 
 
-def FindItem( itemID, container ):
+def FindItem( itemID, container, color = -1 ):
     '''
     Searches through the container for the item IDs specified and returns the first one found
     Also searches through any subcontainers, which Misc.FindByID() does not
     '''
 
+    ignoreColor = False
+    if color == -1:
+        ignoreColor = True
+
     if isinstance( itemID, int ):
-        foundItem = next( ( item for item in container.Contains if item.ItemID == itemID ), None )
+        foundItem = next( ( item for item in container.Contains if ( item.ItemID == itemID and ( ignoreColor or item.Color == color ) ) ), None )
     elif isinstance( itemID, list ):
-        foundItem = next( ( item for item in container.Contains if item.ItemID in itemID ), None )
+        foundItem = next( ( item for item in container.Contains if ( item.ItemID in itemID and ( ignoreColor or item.Color == color ) ) ), None )
     else:
         raise ValueError( 'Unknown argument type for itemID passed to FindItem().', itemID, container )
 
