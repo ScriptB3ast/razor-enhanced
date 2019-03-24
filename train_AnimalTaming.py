@@ -33,7 +33,7 @@ targetClearDelayMilliseconds = 100
 
 
 from Scripts.glossary import items
-from Scripts.glossary.notorieties import GetEnemyNotorieties
+from Scripts.glossary.enemies import GetEnemyNotorieties
 from Scripts.glossary import spells
 from Scripts.glossary import tameables
 from System.Collections.Generic import List
