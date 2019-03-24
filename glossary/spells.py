@@ -1,21 +1,4 @@
-class Reagent:
-    name = ''
-    itemType = 0x0
-
-    def __init__ ( self, name, itemType ):
-        self.name = name
-        self.serial = itemType
-
-reagents = {
-    'Black Pearl': Reagent( 'Black Pearl', 0x0F7A ),
-    'Blood Moss': Reagent( 'Blood Moss', 0x0F7B ),
-    'Garlic': Reagent( 'Garlic', 0x0F84 ),
-    'Ginseng': Reagent( 'Ginseng', 0x0F85 ),
-    'Mandrake Root': Reagent( 'Mandrake Root', 0x0F86 ),
-    'Nightshade': Reagent( 'Nightshade', 0x0F88 ),
-    'Spider\'s Silk': Reagent( 'Spider\'s Silk', 0x0F8D ),
-    'Sulfurous Ash': Reagent( 'Sulfurous Ash', 0x0F8C )
-}
+from Scripts.glossary.items import reagents
 
 spellReagents = {
     # First Circle

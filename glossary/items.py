@@ -16,6 +16,7 @@ items = {
     'healingPotion': None,
     'greaterHealingPotion': None,
 
+
     ### Ingots ###
 
 
@@ -34,11 +35,23 @@ items = {
 
 
     ### Ores ###
-    'oreIron': Item( 'iron ore', 0x19B9, 'ore', 9 )
+    'oreIron': Item( 'iron ore', 0x19B9, 'ore', 9 ),
+
+
+    ### Reagents ###
+    'Black Pearl': Item( 'Black Pearl', 0x0F7A, 'reagent', 0.1 ),
+    'Blood Moss': Item( 'Blood Moss', 0x0F7B, 'reagent', 0.1 ),
+    'Garlic': Item( 'Garlic', 0x0F84, 'reagent', 0.1 ),
+    'Ginseng': Item( 'Ginseng', 0x0F85, 'reagent', 0.1 ),
+    'Mandrake Root': Item( 'Mandrake Root', 0x0F86, 'reagent', 0.1 ),
+    'Nightshade': Item( 'Nightshade', 0x0F88, 'reagent', 0.1 ),
+    'Spider\'s Silk': Item( 'Spider\'s Silk', 0x0F8D, 'reagent', 0.1 ),
+    'Sulfurous Ash': Item( 'Sulfurous Ash', 0x0F8C, 'reagent', 0.1 )
 }
 
 ores = { key: value for key, value in items.items() if value != None and value.category == 'ore' }
 instruments = { key: value for key, value in items.items() if value != None and value.category == 'instrument' }
+reagents = { key: value for key, value in items.items() if value != None and value.category == 'reagent' }
 
 
 def FindItem( itemID, container ):
@@ -64,23 +77,23 @@ def FindItem( itemID, container ):
             return foundItem
 
 
-def FindNumberOfItems( itemTypesToLookFor, items ):
+def FindNumberOfItems( itemIDsToLookFor, items ):
     '''
     Recursively looks through a container for any items in the provided list
     Returns the a dictionary with the number of items found from the list
     '''
     # Create the dictionary
     numberOfItems = {}
-    for item in itemTypesToLookFor:
+    for item in itemIDsToLookFor:
         numberOfItems[ item ] = 0
 
     # Iterate through each item in the given list
     for item in items:
-        if item.ItemID in itemTypesToLookFor:
+        if item.ItemID in itemIDsToLookFor:
             numberOfItems[ item.ItemID ] += item.Amount
         elif item.IsContainer:
             # If the list of items contains a contianer, look in that container for the items too
-            numberOfItemsInSubcontainer = FindNumberOfItems( itemTypesToLookFor, item.Contains )
+            numberOfItemsInSubcontainer = FindNumberOfItems( itemIDsToLookFor, item.Contains )
             for itemFromSubcontainer in numberOfItemsInSubcontainer:
                 numberOfItems[ itemFromSubcontainer ] += numberOfItemsInSubcontainer[ itemFromSubcontainer ]
     return numberOfItems

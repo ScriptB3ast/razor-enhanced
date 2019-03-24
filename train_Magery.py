@@ -24,10 +24,10 @@ def FindReagents():
     Returns a dictionary of the reagents found
     '''
     global reagents
-    reagentItemTypes = []
+    reagentItemIDs = []
     for reagent in reagents:
-        reagentItemTypes.append( reagents[ reagent ].itemType )
-    numberOfReagentsFound = FindNumberOfItems( reagentItemTypes, Player.Backpack.Contains )
+        reagentItemIDs.append( reagents[ reagent ].itemID )
+    numberOfReagentsFound = FindNumberOfItems( reagentItemIDs, Player.Backpack.Contains )
     return numberOfReagentsFound
 
 
@@ -39,7 +39,7 @@ def CheckReagents( spellName, numberOfCasts = 1 ):
     reagentsInBackpack = FindReagents()
     reagentsNeeded = spellInfo[ spellName ].reagents
     for reagent in reagentsNeeded:
-        if reagentsInBackpack[ reagent.itemType ] < numberOfCasts:
+        if reagentsInBackpack[ reagent.itemID ] < numberOfCasts:
             return False
     return True
 
