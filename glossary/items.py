@@ -70,32 +70,41 @@ def FindItem( itemID, container ):
     if foundItem != None:
         return foundItem
 
-    subcontainers = list( filter( lambda item: item.IsContainer, container.Contains ) )
+    subcontainers = [ item for item in container.Contains if item.IsContainer ]
     for subcontainer in subcontainers:
         foundItem = FindItem( itemID, subcontainer )
         if foundItem != None:
             return foundItem
 
 
-def FindNumberOfItems( itemIDsToLookFor, items ):
+def FindNumberOfItems( itemID, container ):
     '''
     Recursively looks through a container for any items in the provided list
     Returns the a dictionary with the number of items found from the list
     '''
+
     # Create the dictionary
     numberOfItems = {}
     for item in itemIDsToLookFor:
         numberOfItems[ item ] = 0
 
+    if isinstance( itemID, int ):
+        foundItems = { item.ItemID: item for item in container.Contains if item.ItemID == itemID }
+    elif isinstance( itemID, list ):
+        foundItems = { item.ItemID: item for item in container.Contains if item.ItemID in itemID }
+    else:
+        raise ValueError( 'Unknown argument type for itemID passed to FindItem().', itemID, container )
+
+    # Add the contents found to the dictionary
+    numberOfItems = { itemID: numberOfItems.get( itemID, 0 ) + foundItems.get( itemID, 0 ) for itemID in set( numberOfItems ).union( foundItems ) }
+
+    subcontainers = [ item for item in container.Contains if item.IsContainer ]
+
     # Iterate through each item in the given list
-    for item in items:
-        if item.ItemID in itemIDsToLookFor:
-            numberOfItems[ item.ItemID ] += item.Amount
-        elif item.IsContainer:
-            # If the list of items contains a container, look in that container for the items too
-            numberOfItemsInSubcontainer = FindNumberOfItems( itemIDsToLookFor, item.Contains )
-            for itemFromSubcontainer in numberOfItemsInSubcontainer:
-                numberOfItems[ itemFromSubcontainer ] += numberOfItemsInSubcontainer[ itemFromSubcontainer ]
+    for subcontainer in subcontainers:
+        numberOfItemsInSubcontainer = FindNumberOfItems( itemID, container )
+        numberOfItems = { itemID: numberOfItems.get( itemID, 0 ) + numberOfItemsInSubcontainer.get( itemID, 0 ) for itemID in set( numberOfItems ).union( numberOfItemsInSubcontainer ) }
+
     return numberOfItems
 
 

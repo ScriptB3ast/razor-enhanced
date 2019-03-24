@@ -27,7 +27,7 @@ def FindReagents():
     reagentItemIDs = []
     for reagent in reagents:
         reagentItemIDs.append( reagents[ reagent ].itemID )
-    numberOfReagentsFound = FindNumberOfItems( reagentItemIDs, Player.Backpack.Contains )
+    numberOfReagentsFound = FindNumberOfItems( reagentItemIDs, Player.Backpack )
     return numberOfReagentsFound
 
 
