@@ -140,6 +140,7 @@ def ProvoEnemies():
         Misc.Pause( config.journalEntryDelayMilliseconds )
 
         if Journal.SearchByType( 'Your music succeeds, as you start a fight.', 'Regular' ):
+            Journal.Clear()
             newEntry = '%i`%i' % ( enemyToProvo1.Serial, enemyToProvo2.Serial )
             enemiesAlreadyProvodCheck = Misc.CheckSharedValue( enemiesProvodSharedValue )
             if enemiesAlreadyProvodCheck:
