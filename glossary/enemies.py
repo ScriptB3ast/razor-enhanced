@@ -63,3 +63,5 @@ def GetEnemies( Mobiles, minRange = 0, maxRange = 12, notorieties = GetEnemyNoto
     partyMembers = [ enemy for enemy in enemies if enemy.InParty ]
     for partyMember in partyMembers:
         enemies.Remove( partyMember )
+
+    return enemies
