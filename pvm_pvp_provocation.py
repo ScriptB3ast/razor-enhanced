@@ -99,7 +99,7 @@ def ProvoEnemies():
     '''
     enemies = GetEnemies( Mobiles, 0, 12, GetEnemyNotorieties(), IgnorePartyMembers = True )
 
-    if len( enemies ) < 2:
+    if enemies == None or len( enemies ) < 2:
         Misc.SendMessage( 'Not enough enemies to provo!', colors[ 'red' ] )
     else:
         # Clear any previously selected target and the target queue
