@@ -154,6 +154,6 @@ def FindInstrument( container ):
     '''
     global instruments
 
-    instrumentIDs = [ instrument.itemID for instrument in instruments ]
+    instrumentIDs = [ instruments[ instrument ].itemID for instrument in instruments ]
 
     return FindItem( instrumentIDs, container )
