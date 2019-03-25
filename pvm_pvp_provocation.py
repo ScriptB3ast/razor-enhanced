@@ -122,6 +122,8 @@ def ProvoEnemies():
             if instrument == None:
                 Misc.SendMessage( 'No instrument to provo with!', colors[ 'red' ] )
                 return
+            Target.WaitForTarget( 2000, True )
+            Target.TargetExecute( instrument )
 
         Target.WaitForTarget( 2000, True )
         enemyToProvo1 = SelectEnemyToProvo( enemies )
