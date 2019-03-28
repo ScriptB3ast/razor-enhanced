@@ -79,9 +79,9 @@ def FindItem( itemID, container, color = -1 ):
         ignoreColor = True
 
     if isinstance( itemID, int ):
-        foundItem = next( ( item for item in container.Contains if ( item.ItemID == itemID and ( ignoreColor or item.Color == color ) ) ), None )
+        foundItem = next( ( item for item in container.Contains if ( item.ItemID == itemID and ( ignoreColor or item.Hue == color ) ) ), None )
     elif isinstance( itemID, list ):
-        foundItem = next( ( item for item in container.Contains if ( item.ItemID in itemID and ( ignoreColor or item.Color == color ) ) ), None )
+        foundItem = next( ( item for item in container.Contains if ( item.ItemID in itemID and ( ignoreColor or item.Hue == color ) ) ), None )
     else:
         raise ValueError( 'Unknown argument type for itemID passed to FindItem().', itemID, container )
 
