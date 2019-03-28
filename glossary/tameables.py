@@ -156,7 +156,7 @@ animals = {
     'bull': Animal( 'Bull', 0x00E8, 0x0000, 90, 100, [ 'Bull' ] ),
     'bull2': Animal( 'Bull', 0x00E9, 0x0000, 90, 100, [ 'Bull' ] ),
     'foxBlood': None,
-    'hellcatSmall': Animal( 'Hellcat (Small)', 0x00C9, 0x0000, 90, 100, [ 'Feline' ] ),
+    'hellcatSmall': Animal( 'Hellcat (Small)', 0x00C9, 0x0647, 90, 100, [ 'Feline' ] ),
     'mongbatGreater': None,
     'ostardFrenzied': Animal( 'Frenzied Ostard', 0x00DA, 0x0000, 90, 100, [ 'Ostard' ] ),
     'osseinRam': None,
