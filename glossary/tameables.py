@@ -134,7 +134,7 @@ animals = {
     ### Min skill 70, Max skill 80 ###
     'bearRideablePolar': Animal( 'Polar Bear', 0x00D5, 0x0000, 70, 80, [ 'Bear' ] ),
     'bearGrizzly': Animal( 'Grizzly Bear', 0x00D4, 0x0000, 70, 80, [ 'Bear' ] ),
-    'dragonYoung': None,
+    'dragonYoung': Animal( 'Young Dragon', 0x003C, 0x0000, 70, 80, None ),
     'hartGreat': Animal( 'Great Hart', 0x00EA, 0x0000, 70, 80, None ),
     'leopardSnow': Animal( 'Snow Leopard', 0x0040, 0x0000, 70, 80, [ 'Feline' ] ),
     'leopardSnow2': Animal( 'Snow Leopard', 0x0041, 0x0000, 70, 80, [ 'Feline' ] ),
