@@ -9,6 +9,7 @@ Description: Smelts all ore into ingots
 enableSmeltFromPet = True
 
 from Scripts.glossary.items import ores
+from Scripts.utilities.colors import colors
 
 messages = [
     'You smelt the ore removing the impurities and put the metal in your backpack.',
@@ -48,6 +49,7 @@ def Smelt():
             SmeltAllInMobile( pet )
 
     SmeltAllInMobile( Player )
+    Player.HeadMessage( colors[ 'green' ], 'Done smelting!' )
 
 # Start smelting
 Smelt()
