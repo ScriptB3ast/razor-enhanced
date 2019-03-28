@@ -139,7 +139,7 @@ def FindNumberOfItems( itemID, container, color = -1 ):
 
         # Populate numberOfItems
         for item in container.Contains:
-            if item.ItemID == itemID and ( ignoreColor or item.Color == color ):
+            if item.ItemID == itemID and ( ignoreColor or item.Hue == color ):
                 numberOfItems[ itemID ] += item.Amount
     elif isinstance( itemID, list ):
         # Initialize numberOfItems
@@ -148,8 +148,8 @@ def FindNumberOfItems( itemID, container, color = -1 ):
 
         # Populate numberOfItems
         for item in container.Contains:
-            if item.ItemID in itemID and ( ignoreColor or item.Color == color ):
-                numberOfItems[ itemID ] += item.Amount
+            if item.ItemID in itemID and ( ignoreColor or item.Hue == color ):
+                numberOfItems[ item.ItemID ] += item.Amount
     else:
         raise ValueError( 'Unknown argument type for itemID passed to FindItem().', itemID, container )
 
