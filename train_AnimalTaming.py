@@ -211,6 +211,10 @@ def TrainAnimalTaming():
     Player.SetWarMode( False )
 
     while not Player.IsGhost and Player.GetRealSkillValue( 'Animal Taming' ) < 100:
+        if animalBeingTamed != None and Mobiles.FindBySerial( animalBeingTamed.Serial ) == None:
+            Misc.SendMessage( 'Animal was killed or disappeared' )
+            animalBeingTamed = None
+
         if not maximumTameAttempts == 0 and timesTried > maximumTameAttempts:
             Mobiles.Message( animalBeingTamed, 1100, 'Tried more than %i times to tame. Ignoring animal' % maximumTameAttempts )
             Mobiles.IgnoreObject( animalBeingTamed )
