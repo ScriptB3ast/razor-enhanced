@@ -69,7 +69,7 @@ items = {
     'sledge hammer': myItem( 'sledge hammer', 0x0FB5, 0x0000, 'tool', 10 ),
     'smith\'s hammer': myItem( 'smith\'s hammer', 0x13E3, 0x0000, 'tool', 8 ),
     'tinker\'s tools': myItem( 'tinker\'s tools', 0x1EBC, 0x0000, 'tool', 1 ),
-    'tongs': myItem( 'tongs', 0x0000, 0x0FBB, 'tool', 2 ),
+    'tongs': myItem( 'tongs', 0x0FBB, 0x0000, 'tool', 2 ),
     'tool kit': myItem( 'tool kit', 0x1EB8, 0x0000, 'tool', 1 )
 }
 
