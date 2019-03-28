@@ -200,3 +200,10 @@ def FindMoongate():
     moongateFilter.Graphics = List[int]( moongateIDs )
 
     return Items.ApplyFilter( moongateFilter )
+
+
+def MoveItem( item, destinationBag, amount = 0 ):
+    RazorEnhancedClasses.Items.Move( item, destinationBag, amount )
+
+    # Wait for the move to complete
+    RazorEnhancedClasses.Misc.Pause( 600 )
