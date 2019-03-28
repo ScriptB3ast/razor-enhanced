@@ -74,6 +74,7 @@ items = {
 }
 
 instruments = { itemName: item for itemName, item in items.items() if item != None and item.category == 'instrument' }
+moongates = { itemName: item for itemName, item in items.items() if item != None and item.category == 'moongate' }
 ores = { itemName: item for itemName, item in items.items() if item != None and item.category == 'ore' }
 reagents = { itemName: item for itemName, item in items.items() if item != None and item.category == 'reagent' }
 tools = { itemName: item for itemName, item in items.items() if item != None and item.category == 'tool' }
