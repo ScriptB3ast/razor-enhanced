@@ -409,9 +409,9 @@ def TrainAnimalTaming():
                 tameHandled = True
             elif ( Journal.SearchByName( 'You have no chance of taming this creature', animalBeingTamed.Name ) or
                     Journal.SearchByType( 'Target cannot be seen', 'Regular' ) or
-                    Journal.Search( 'Do not have a clear path to the animal' ) or
-                    Journal.Search( 'This animal has had too many owners' ) or
-                    Journal.Search( 'That animal looks tame already' ) ):
+                    Journal.SearchByName( 'This animal has had too many owners and is too upset for you to tame.', animalBeingTamed.Name ) or
+                    Journal.SearchByName( 'That animal looks tame already.', animalBeingTamed.Name ) or
+                    Journal.SearchByName( 'You do not have a clear path to the animal you are taming, and must cease your attempt.', 'System' ) ):
                 # Ignore the object and set to None so that another animal can be found
                 Misc.IgnoreObject( animalBeingTamed )
                 animalBeingTamed = None
