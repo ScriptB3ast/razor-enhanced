@@ -103,57 +103,90 @@ def ProvoEnemies():
     Identifies enemies that need to be provo'd and uses the Provocation skill on them
     Having this encapsulated in a function makes it possible to use the 'return' keyword
     '''
-    enemies = GetEnemies( Mobiles, 0, 12, GetEnemyNotorieties(), IgnorePartyMembers = True )
-
-    if enemies == None or len( enemies ) < 2:
-        Misc.SendMessage( 'Not enough enemies to provo!', colors[ 'red' ] )
-    else:
-        # Clear any previously selected target and the target queue
-        Target.ClearLastandQueue()
-
-        # Wait for the target to finish clearing
-        Misc.Pause( config.targetClearDelayMilliseconds )
-
-        Player.UseSkill( 'Provocation' )
-
-        # Wait for the journal entry to appear
-        Misc.Pause( config.journalEntryDelayMilliseconds )
-
-        if Journal.SearchByType( 'You must wait a few moments to use another skill.', 'Regular' ):
-            # Something is on cooldown, nothing we can do
-            Journal.Clear()
+    
+    Misc.ClearIgnore()
+    
+    provoAttemptCompleted = False
+    
+    while not provoAttemptCompleted:
+        enemies = GetEnemies( Mobiles, 0, 12, GetEnemyNotorieties(), IgnorePartyMembers = True )
+        
+        if enemies == None or len( enemies ) < 2:
+            Misc.SendMessage( 'Not enough enemies to provo!', colors[ 'red' ] )
             return
-        elif Journal.SearchByType( 'What instrument shall you play?', 'Regular' ):
-            instrument = FindInstrument( Player.Backpack )
-            if instrument == None:
-                Misc.SendMessage( 'No instrument to provo with!', colors[ 'red' ] )
+        else:
+            # Clear any previously selected target and the target queue
+            Target.ClearLastandQueue()
+
+            # Wait for the target to finish clearing
+            Misc.Pause( config.targetClearDelayMilliseconds )
+
+            Player.UseSkill( 'Provocation' )
+
+            # Wait for the journal entry to appear
+            Misc.Pause( config.journalEntryDelayMilliseconds )
+
+            if Journal.SearchByType( 'You must wait a few moments to use another skill.', 'Regular' ):
+                # Something is on cooldown, nothing we can do
+                Journal.Clear()
                 return
+            elif Journal.SearchByType( 'What instrument shall you play?', 'Regular' ):
+                instrument = FindInstrument( Player.Backpack )
+                if instrument == None:
+                    Misc.SendMessage( 'No instrument to provo with!', colors[ 'red' ] )
+                    return
+                Target.WaitForTarget( 2000, True )
+                Target.TargetExecute( instrument )
+
             Target.WaitForTarget( 2000, True )
-            Target.TargetExecute( instrument )
+            enemyToProvo1 = SelectEnemyToProvo( enemies )
+            Target.TargetExecute( enemyToProvo1 )
 
-        Target.WaitForTarget( 2000, True )
-        enemyToProvo1 = SelectEnemyToProvo( enemies )
-        Target.TargetExecute( enemyToProvo1 )
+            # Wait for the journal entry to appear
+            Misc.Pause( config.journalEntryDelayMilliseconds )
+                
+            if Journal.SearchByType( 'Target cannot be seen', 'Regular' ):
+                Mobiles.Message( enemyToProvo1, colors[ 'red' ], 'Target 1 cannot be seen' )
+                Misc.IgnoreObject( enemyToProvo1 )
+                Journal.Clear()
+                provoAttemptCompleted = False
+                Misc.Pause( 1000 )
+                continue
 
-        # Remove the selected enemy to ensure we don't provo an enemy onto themselves
-        enemies.Remove( enemyToProvo1 )
+            # Remove the selected enemy to ensure we don't provo an enemy onto themselves
+            enemies.Remove( enemyToProvo1 )
 
-        Target.WaitForTarget( 2000, True )
-        enemyToProvo2 = SelectEnemyToProvo( enemies )
-        Target.TargetExecute( enemyToProvo2 )
+            Target.WaitForTarget( 2000, True )
+            enemyToProvo2 = SelectEnemyToProvo( enemies )
+            Target.TargetExecute( enemyToProvo2 )
 
-        # Wait for the journal entry to appear
-        Misc.Pause( config.journalEntryDelayMilliseconds )
+            # Wait for the journal entry to appear
+            Misc.Pause( config.journalEntryDelayMilliseconds )
+            
+            if Journal.SearchByType( 'Target cannot be seen', 'Regular' ):
+                Mobiles.Message( enemyToProvo2, colors[ 'red' ], 'Target 2 cannot be seen' )
+                Misc.IgnoreObject( enemyToProvo2 )
+                Journal.Clear()
+                provoAttemptCompleted = False
+                Misc.Pause( 1000 )
+                continue
+            
+            Mobiles.Message( enemyToProvo1, colors[ 'cyan' ], 'Provo Target 1' )
+            Mobiles.Message( enemyToProvo2, colors[ 'cyan' ], 'Provo Target 2' )
 
-        if Journal.SearchByType( 'Your music succeeds, as you start a fight.', 'Regular' ):
-            Journal.Clear()
-            newEntry = '%i`%i' % ( enemyToProvo1.Serial, enemyToProvo2.Serial )
-            enemiesAlreadyProvodCheck = Misc.CheckSharedValue( enemiesProvodSharedValue )
-            if enemiesAlreadyProvodCheck:
-                enemiesAlreadyProvod = Misc.ReadSharedValue( enemiesProvodSharedValue )
-                Misc.SetSharedValue( enemiesProvodSharedValue, enemiesAlreadyProvod + ',' + newEntry )
-            else:
-                Misc.SetSharedValue( enemiesProvodSharedValue, newEntry )
+            # Wait for the journal entry to appear
+            Misc.Pause( config.journalEntryDelayMilliseconds )
+
+            if Journal.SearchByType( 'Your music succeeds, as you start a fight.', 'Regular' ):
+                Journal.Clear()
+                newEntry = '%i`%i' % ( enemyToProvo1.Serial, enemyToProvo2.Serial )
+                enemiesAlreadyProvodCheck = Misc.CheckSharedValue( enemiesProvodSharedValue )
+                if enemiesAlreadyProvodCheck:
+                    enemiesAlreadyProvod = Misc.ReadSharedValue( enemiesProvodSharedValue )
+                    Misc.SetSharedValue( enemiesProvodSharedValue, enemiesAlreadyProvod + ',' + newEntry )
+                else:
+                    Misc.SetSharedValue( enemiesProvodSharedValue, newEntry )
+            provoAttemptCompleted = True
 
 # Run ProvoEnemies
 ProvoEnemies()
