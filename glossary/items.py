@@ -1,3 +1,7 @@
+from Scripts.glossary.razorEnhancedClassMasterSingleton import MasterSingleton
+
+RazorEnhancedClasses = MasterSingleton()
+
 class myItem:
     name = None
     itemID = None
@@ -81,6 +85,15 @@ tools = { itemName: item for itemName, item in items.items() if item != None and
 
 
 def FindItem( itemID, container, color = -1 ):
+def AddRazorEnhancedClassesToModule( AutoLoot, BandageHeal, BuyAgent, DPSMeter, Dress, Friend,
+        Items, Journal, Misc, Mobiles, Organizer, PathFinding, Player, Restock,
+        Scavenger, SellAgent, Spells, Statics, Target, Timer ):
+    RazorEnhancedClasses.PopulateClasses( AutoLoot, BandageHeal, BuyAgent, DPSMeter, Dress, Friend,
+        Items, Journal, Misc, Mobiles, Organizer, PathFinding, Player, Restock,
+        Scavenger, SellAgent, Spells, Statics, Target, Timer )
+    return
+
+
     '''
     Searches through the container for the item IDs specified and returns the first one found
     Also searches through any subcontainers, which Misc.FindByID() does not
