@@ -46,8 +46,12 @@ items = {
 
 
     ### Ores ###
-    'iron ore': myItem( 'iron ore', 0x19B9, 0x0000, 'ore', None ),
+    # Weights are set to None since the weight varies depending on the player's mining skill
+    'bronze ore': myItem( 'bronze ore', 0x19B9, 0x06D8, 'ore', None ),
+    'copper ore': myItem( 'copper ore', 0x19B9, 0x045F, 'ore', None ),
     'dull copper ore': myItem( 'dull copper ore', 0x19B9, 0x0415, 'ore', None ),
+    'iron ore': myItem( 'iron ore', 0x19B9, 0x0000, 'ore', None ),
+    'shadow iron ore': myItem( 'shadow iron ore', 0x19B9, 0x0455, 'ore', None ),
 
 
     ### Reagents ###
