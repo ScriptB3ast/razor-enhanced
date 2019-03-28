@@ -309,11 +309,14 @@ def TrainAnimalTaming():
                 Mobiles.Message( animalBeingTamed, 90, 'Found animal to tame' )
 
         # Check if animal is close enough to tame
+        maxDistanceToTarget = 3
+        if not tameOngoing:
+            maxDistanceToTarget = 1
         if Player.DistanceTo( animalBeingTamed ) > 12:
             Misc.SendMessage( 'Animal moved too far away, ignoring for now', 1100  )
             animalBeingTamed = None
             continue
-        elif animalBeingTamed != None and Player.DistanceTo( animalBeingTamed ) > 1:
+        elif animalBeingTamed != None and Player.DistanceTo( animalBeingTamed ) > maxDistanceToTarget:
             if enableFollowAnimal:
                 Timer.Create( 'catchUpToAnimalTimer', catchUpToAnimalTimerMilliseconds )
                 playerStuck = not FollowMobile( animalBeingTamed, 2, True )
