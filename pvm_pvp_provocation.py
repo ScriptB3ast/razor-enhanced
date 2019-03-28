@@ -81,13 +81,19 @@ def SelectEnemyToProvo( enemies ):
         enemiesToProvo = enemies
 
     # Select the enemy to provo
-    paragon = next( ( enemy for enemy in enemiesToProvo if enemy.Color == 1157 ), None )
-    if paragon != None:
-        return paragon
+    paragons = [ enemy for enemy in enemiesToProvo if enemy.Color == 1157 ]
+    if len( paragons ) > 0:
+        paragonMobiles = GetEmptyMobileList( Mobiles )
+        for paragon in paragons:
+            paragonMobiles.Add( paragon )
+        return Mobiles.Select( paragonMobiles, 'Nearest' )
 
-    warMode = next( ( enemy for enemy in enemiesToProvo if enemy.WarMode ), None )
-    if warMode != None:
-        return warMode
+    enemiesInWarMode = [ enemy for enemy in enemiesToProvo if enemy.WarMode ]
+    if len( enemiesInWarMode ) > 0:
+        warModeMobiles = GetEmptyMobileList( Mobiles )
+        for enemyInWarMode in enemiesInWarMode:
+            warModeMobiles.Add( enemyInWarMode )
+        return Mobiles.Select( warModeMobiles, 'Nearest' )
 
     return Mobiles.Select( enemiesToProvo, 'Nearest' )
 
