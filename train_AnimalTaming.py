@@ -9,6 +9,8 @@ Description: Tames nearby animals to train Animal Taming to GM
 ## Script options ##
 # Change to the name that you want to rename the tamed animals to
 renameTamedAnimalsTo = 'wardoc'
+# Add any name of pets to ignore
+petsToIgnore = [ renameTamedAnimalsTo, 'Crimson', 'Lizzy' ]
 # Change to the number of followers you'd like to keep.
 # The script will auto-release the most recently tamed animal if the follower number exceeds this number
 # Some animals have a follower count greater than one, which may cause them to be released if this number is not set high enough
@@ -68,7 +70,7 @@ def FindAnimalToTame():
     # Exclude animals that have already been tamed by this player
     tameableMobilesTemp = tameableMobiles[:]
     for tameableMobile in tameableMobiles:
-        if tameableMobile.Name == renameTamedAnimalsTo:
+        if tameableMobile.Name in petsToIgnore:
             tameableMobilesTemp.Remove( tameableMobile )
 
     tameableMobiles = tameableMobilesTemp
