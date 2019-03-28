@@ -41,6 +41,10 @@ items = {
     'tambourineWithTassles': myItem( 'tambourineWithRedTassles', 0x0E9D, 0x0000, 'instrument', None ),
 
 
+    ### Moongates ###
+    'blue moongate': myItem( 'blue moongate', 0x0F6C, 0x0000, 'moongate', None ),
+
+
     ### Ores ###
     'iron ore': myItem( 'iron ore', 0x19B9, 0x0000, 'ore', None ),
     'dull copper ore': myItem( 'dull copper ore', 0x19B9, 0x0415, 'ore', None ),
