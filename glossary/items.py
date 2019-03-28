@@ -84,7 +84,6 @@ reagents = { itemName: item for itemName, item in items.items() if item != None 
 tools = { itemName: item for itemName, item in items.items() if item != None and item.category == 'tool' }
 
 
-def FindItem( itemID, container, color = -1 ):
 def AddRazorEnhancedClassesToModule( AutoLoot, BandageHeal, BuyAgent, DPSMeter, Dress, Friend,
         Items, Journal, Misc, Mobiles, Organizer, PathFinding, Player, Restock,
         Scavenger, SellAgent, Spells, Statics, Target, Timer ):
