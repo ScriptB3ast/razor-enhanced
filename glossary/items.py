@@ -94,6 +94,7 @@ def AddRazorEnhancedClassesToModule( AutoLoot, BandageHeal, BuyAgent, DPSMeter, 
     return
 
 
+def FindItem( itemID, container, color = -1, ignoreContainer = [] ):
     '''
     Searches through the container for the item IDs specified and returns the first one found
     Also searches through any subcontainers, which Misc.FindByID() does not
@@ -113,9 +114,9 @@ def AddRazorEnhancedClassesToModule( AutoLoot, BandageHeal, BuyAgent, DPSMeter, 
     if foundItem != None:
         return foundItem
 
-    subcontainers = [ item for item in container.Contains if item.IsContainer ]
+    subcontainers = [ item for item in container.Contains if ( item.IsContainer and not item.Serial in ignoreContainer ) ]
     for subcontainer in subcontainers:
-        foundItem = FindItem( itemID, subcontainer )
+        foundItem = FindItem( itemID, subcontainer, color, ignoreContainer )
         if foundItem != None:
             return foundItem
 
