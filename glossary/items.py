@@ -20,8 +20,11 @@ items = {
 
 
     ### Ingots ###
-    'iron ingot': myItem( 'iron ingot', 0x1BF2, 0x0000, 'ingot', 0.1 ),
+    'bronze ingot': myItem( 'bronze ingot', 0x1BF2, 0x06D8, 'ingot', 0.1 ),
+    'copper ingot': myItem( 'copper ingot', 0x1BF2, 0x045F, 'ingot', 0.1 ),
     'dull copper ingot': myItem( 'dull copper ingot', 0x1BF2, 0x0415, 'ingot', 0.1 ),
+    'iron ingot': myItem( 'iron ingot', 0x1BF2, 0x0000, 'ingot', 0.1 ),
+    'shadow iron ingot': myItem( 'shadow iron ingot', 0x1BF2, 0x0455, 'ingot', 0.1 ),
 
 
     ### Instruments ###
