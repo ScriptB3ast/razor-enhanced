@@ -13,6 +13,10 @@ Description: Selects enemies to use the Provocation skill on.
         3. Any other enemy
 '''
 
+## Script options ##
+# Change depending on whether or not you want a more verbose output on what is being provo'd or ignored by the script
+showTargets = True
+
 import re
 from System.Collections.Generic import List
 from Scripts.glossary.items import FindInstrument
@@ -103,14 +107,16 @@ def ProvoEnemies():
     Identifies enemies that need to be provo'd and uses the Provocation skill on them
     Having this encapsulated in a function makes it possible to use the 'return' keyword
     '''
-    
+
+    global showTargets
+
     Misc.ClearIgnore()
-    
+
     provoAttemptCompleted = False
-    
+
     while not provoAttemptCompleted:
         enemies = GetEnemies( Mobiles, 0, 12, GetEnemyNotorieties(), IgnorePartyMembers = True )
-        
+
         if enemies == None or len( enemies ) < 2:
             Misc.SendMessage( 'Not enough enemies to provo!', colors[ 'red' ] )
             return
@@ -144,9 +150,10 @@ def ProvoEnemies():
 
             # Wait for the journal entry to appear
             Misc.Pause( config.journalEntryDelayMilliseconds )
-                
+
             if Journal.SearchByType( 'Target cannot be seen', 'Regular' ):
-                Mobiles.Message( enemyToProvo1, colors[ 'red' ], 'Target 1 cannot be seen' )
+                if showTargets:
+                    Mobiles.Message( enemyToProvo1, colors[ 'red' ], 'Target 1 cannot be seen' )
                 Misc.IgnoreObject( enemyToProvo1 )
                 Journal.Clear()
                 provoAttemptCompleted = False
@@ -162,17 +169,19 @@ def ProvoEnemies():
 
             # Wait for the journal entry to appear
             Misc.Pause( config.journalEntryDelayMilliseconds )
-            
+
             if Journal.SearchByType( 'Target cannot be seen', 'Regular' ):
-                Mobiles.Message( enemyToProvo2, colors[ 'red' ], 'Target 2 cannot be seen' )
+                if showTargets:
+                    Mobiles.Message( enemyToProvo2, colors[ 'red' ], 'Target 2 cannot be seen' )
                 Misc.IgnoreObject( enemyToProvo2 )
                 Journal.Clear()
                 provoAttemptCompleted = False
                 Misc.Pause( 1000 )
                 continue
-            
-            Mobiles.Message( enemyToProvo1, colors[ 'cyan' ], 'Provo Target 1' )
-            Mobiles.Message( enemyToProvo2, colors[ 'cyan' ], 'Provo Target 2' )
+
+            if showTargets:
+                Mobiles.Message( enemyToProvo1, colors[ 'cyan' ], 'Provo Target 1' )
+                Mobiles.Message( enemyToProvo2, colors[ 'cyan' ], 'Provo Target 2' )
 
             # Wait for the journal entry to appear
             Misc.Pause( config.journalEntryDelayMilliseconds )
