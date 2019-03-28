@@ -107,34 +107,29 @@ def FollowMobile( mobile, maxDistanceToMobile = 2, startPlayerStuckTimer = False
 
     mobilePosition = mobile.Position
     playerPosition = Player.Position
-    directions = []
+    directionToWalk = ''
     if mobilePosition.X > playerPosition.X and mobilePosition.Y > playerPosition.Y:
-        directions.append( 'Down' )
+        directionToWalk = 'Down'
     if mobilePosition.X < playerPosition.X and mobilePosition.Y > playerPosition.Y:
-        directions.append( 'Left' )
+        directionToWalk = 'Left'
     if mobilePosition.X > playerPosition.X and mobilePosition.Y < playerPosition.Y:
-        directions.append( 'Right' )
+        directionToWalk = 'Right'
     if mobilePosition.X < playerPosition.X and mobilePosition.Y < playerPosition.Y:
-        directions.append( 'Up' )
+        directionToWalk = 'Up'
     if mobilePosition.X > playerPosition.X and mobilePosition.Y == playerPosition.Y:
-        directions.append( 'Down' )
-        directions.append( 'Right' )
+        directionToWalk = 'East'
     if mobilePosition.X < playerPosition.X and mobilePosition.Y == playerPosition.Y:
-        directions.append( 'Up' )
-        directions.append( 'Left' )
+        directionToWalk = 'West'
     if mobilePosition.X == playerPosition.X and mobilePosition.Y > playerPosition.Y:
-        directions.append( 'Down' )
-        directions.append( 'Left' )
+        directionToWalk = 'South'
     if mobilePosition.X == playerPosition.X and mobilePosition.Y < playerPosition.Y:
-        directions.append( 'Up' )
-        directions.append( 'Right' )
+        directionToWalk = 'North'
 
     if startPlayerStuckTimer:
         Timer.Create( 'playerStuckTimer', playerStuckTimerMilliseconds )
 
     playerPosition = Player.Position
-    for direction in directions:
-        PlayerWalk( direction )
+    PlayerWalk( directionToWalk )
 
     newPlayerPosition = Player.Position
     if playerPosition == newPlayerPosition and not Timer.Check( 'playerStuckTimer' ):
