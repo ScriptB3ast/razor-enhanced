@@ -27,6 +27,26 @@ from Scripts import config
 
 enemiesProvodSharedValue = 'enemiesProvod'
 
+def CheckPlayerInDungeon( Player ):
+    '''
+    Uses the Player's X and Y coordinates to determine if they are in a dungeon
+    '''
+
+    if Player.Position.X < 5120:
+        # Player is west of the dungeon cutoff
+        return False
+
+    if Player.Position.Y < 2305:
+        # Player is east of the dungeon cutoff and to the north of the Lost Lands
+        return True
+
+    if Player.Position.X > 6140:
+        # Player is east of the Lost Lands
+        return True
+
+    # Player is in the Lost Lands
+    return False
+
 def SelectEnemyToProvo( enemies ):
     '''
     Selects the nearest enemy who isn't provo'd to use Provocation on
@@ -92,12 +112,14 @@ def SelectEnemyToProvo( enemies ):
             paragonMobiles.Add( paragon )
         return Mobiles.Select( paragonMobiles, 'Nearest' )
 
-    enemiesInWarMode = [ enemy for enemy in enemiesToProvo if enemy.WarMode ]
-    if len( enemiesInWarMode ) > 0:
-        warModeMobiles = GetEmptyMobileList( Mobiles )
-        for enemyInWarMode in enemiesInWarMode:
-            warModeMobiles.Add( enemyInWarMode )
-        return Mobiles.Select( warModeMobiles, 'Nearest' )
+    if not CheckPlayerInDungeon( Player ):
+        # Make sure we're pulling enemies attacking and not birds or rabbits
+        enemiesInWarMode = [ enemy for enemy in enemiesToProvo if enemy.WarMode ]
+        if len( enemiesInWarMode ) > 0:
+            warModeMobiles = GetEmptyMobileList( Mobiles )
+            for enemyInWarMode in enemiesInWarMode:
+                warModeMobiles.Add( enemyInWarMode )
+            return Mobiles.Select( warModeMobiles, 'Nearest' )
 
     return Mobiles.Select( enemiesToProvo, 'Nearest' )
 
