@@ -85,6 +85,10 @@ def TrainMagery():
                 # Target the cast spell on the player
                 Target.WaitForTarget( 2000, True )
                 Target.TargetExecute( Player.Serial )
+            else:
+                Player.UseSkill( 'Meditation' )
+                while Player.Mana < Player.ManaMax:
+                    Misc.Pause( 200 )
 
         # Wait a little bit so that the while loop doesn't consume as much CPU
         Misc.Pause( 50 )
