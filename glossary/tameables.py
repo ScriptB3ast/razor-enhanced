@@ -219,7 +219,7 @@ animals = {
     'nightridge': None,
     'nightwolf': None,
     'skree': None,
-    'spiderDread': Animal( 'Dread Spider', 0x000B, 0x0000, 110, 120, None ),
+    'dread spider': Animal( 'dread spider', 0x000B, 0x0000, 110, 120, None ),
     'unicorn': None,
     'wolfTsuki': None,
     'wyrmWhite': None,
