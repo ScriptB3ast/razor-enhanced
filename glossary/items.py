@@ -149,7 +149,7 @@ items = {
 
     # Tambourines
     'tambourine': myItem( 'tambourine', 0x0E9E, 0x0000, 'instrument', None ),
-    'tambourineWithTassles': myItem( 'tambourineWithRedTassles', 0x0E9D, 0x0000, 'instrument', None ),
+    'tambourine (red tassle)': myItem( 'tambourine', 0x0E9D, 0x0000, 'instrument', None ),
 
 
     ### Moongates ###
