@@ -169,6 +169,9 @@ items = {
     'valorite ore': myItem( 'valorite ore', 0x19B9, 0x0544, 'ore', None ),
 
 
+    ### Potions ###
+    'keg of greater strength potions': myItem( 'keg of greater strength potions', 0x1940, 0x03B8, 'potion', 1 ),
+    'bottle of toxic poison': myItem( 'bottle of toxic poison', 0x0EFB, 0x0785, 'potion', 1 ),
 
 
     ### Reagents ###
