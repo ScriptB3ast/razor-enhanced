@@ -87,6 +87,11 @@ items = {
     'UOForever\'s 6th Year': myItem( 'UOForever\'s 6th Year', 0x9BC8, 0x0AA1, 'decoration', 1 ),
 
 
+    ### Deeds ###
+    'bank check': myItem( 'bank check', 0x14F0, 0x0034, 'deed', 1 ),
+    'power scroll': myItem( 'power scroll', 0x14F0, 0x0481, 'deed', 1 ),
+
+
     ### Healing ###
     'bandage': myItem( 'bandage', 0x0E21, 0x0000, 'healing', 0.1 ),
     'healingPotion': None,
