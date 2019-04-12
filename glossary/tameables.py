@@ -199,7 +199,7 @@ animals = {
     'beetleFire': None,
     'rune beetle': Animal( 'rune beetle', 0x00F4, 0x0000, 110, 120, None ),
 
-    'dragon': None,
+    'dragon': Animal( 'dragon', 0x003B, 0x0000, 110, 120, None ),
     'dragonSwamp': None,
     'dragonWater': None,
     'dragonDeepWater': None,
