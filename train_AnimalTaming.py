@@ -210,7 +210,7 @@ def TrainAnimalTaming():
     Player.SetWarMode( True )
     Player.SetWarMode( False )
 
-    while not Player.IsGhost and Player.GetRealSkillValue( 'Animal Taming' ) < 100:
+    while not Player.IsGhost and Player.GetRealSkillValue( 'Animal Taming' ) < Player.GetSkillCap( 'Animal Taming' ):
         if animalBeingTamed != None and Mobiles.FindBySerial( animalBeingTamed.Serial ) == None:
             Misc.SendMessage( 'Animal was killed or disappeared' )
             animalBeingTamed = None
