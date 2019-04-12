@@ -222,7 +222,7 @@ animals = {
     'dread spider': Animal( 'dread spider', 0x000B, 0x0000, 110, 120, None ),
     'unicorn': None,
     'wolfTsuki': None,
-    'wyrmWhite': None,
+    'white wyrm': Animal( 'white wyrm', 0x00B4, 0x0000, 110, 120, None ),
 
 
     ### Challenging ###
