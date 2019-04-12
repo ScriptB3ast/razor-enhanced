@@ -197,7 +197,7 @@ animals = {
     ### Min skill 110, Max skill 120 ###
     'beetleDeath': None,
     'beetleFire': None,
-    'beetleRune': None,
+    'rune beetle': Animal( 'rune beetle', 0x00F4, 0x0000, 110, 120, None ),
 
     'dragon': None,
     'dragonSwamp': None,
