@@ -92,6 +92,11 @@ items = {
     'power scroll': myItem( 'power scroll', 0x14F0, 0x0481, 'deed', 1 ),
 
 
+    ### Food ###
+    'dragon fruit': myItem( 'dragon fruit', 0x0C65, 0x0494, 'food', 1 ),
+    'muffins': myItem( 'muffins', 0x09EB, 0x0000, 'food', 1 ),
+
+
     ### Healing ###
     'bandage': myItem( 'bandage', 0x0E21, 0x0000, 'healing', 0.1 ),
     'healingPotion': None,
