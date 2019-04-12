@@ -314,6 +314,27 @@ items = {
     'Summon Water Elemental scroll': myItem( 'Summon Water Elemental scroll', 0x1F6C, 0x0000, 'magic scroll', 1 ),
 
     ### Tools ###
+    'disguise kit': myItem( 'disguise kit', 0x0E05, 0x0000, 'tool', None ),
+    'dovetail saw': myItem( 'dovetail saw', 0x1028, 0x0000, 'tool', None ),
+    'dyes': myItem( 'dyes', 0x0FA9, 0x0000, 'tool', None ),
+    'dyeing tub': myItem( 'dyeing tub', 0x0FAB, 0x0000, 'tool', None ),
+    'gargoyle\'s pickaxe': myItem( 'gargoyle\'s pickaxe', 0x0E86, 0x0430, 'tool', 11 ),
+    'interior decorator': myItem( 'interior decorator', 0x0FC1, 0x0000, 'tool', 11 ),
+    'lockpick': myItem( 'lockpick', 0x14FC, 0x0000, 'tool', 11 ),
+    'pickaxe': myItem( 'pickaxe', 0x0E86, 0x0000, 'tool', 11 ),
+    'prospector\'s tool': myItem( 'prospector\'s tool', 0x0FB4, 0x0000, 'tool', 11 ),
+    'sturdy pickaxe': myItem( 'pickaxe', 0x0E86, 0x0973, 'tool', 11 ),
+
+    # Runic Hammers
+    'agapite runic hammer': myItem( 'agapite runic hammer', 0x13E3, 0x097E, 'tool', 8 ),
+    'bronze runic hammer': myItem( 'bronze runic hammer', 0x13E3, 0x06D8, 'tool', 8 ),
+    'copper runic hammer': myItem( 'copper runic hammer', 0x13E3, 0x045F, 'tool', 8 ),
+    'dull copper runic hammer': myItem( 'dull copper runic hammer', 0x13E3, 0x0415, 'tool', 8 ),
+    'golden runic hammer': myItem( 'golden runic hammer', 0x13E3, 0x06B7, 'tool', 8 ),
+    'shadow iron runic hammer': myItem( 'shadow iron runic hammer', 0x13E3, 0x0455, 'tool', 8 ),
+    'verite runic hammer': myItem( 'verite runic hammer', 0x13E3, 0x07D2, 'tool', 8 ),
+    'valorite runic hammer': myItem( 'valorite runic hammer', 0x13E3, 0x0544, 'tool', 8 ),
+
     'sledge hammer': myItem( 'sledge hammer', 0x0FB5, 0x0000, 'tool', 10 ),
     'smith\'s hammer': myItem( 'smith\'s hammer', 0x13E3, 0x0000, 'tool', 8 ),
     'tinker\'s tools': myItem( 'tinker\'s tools', 0x1EBC, 0x0000, 'tool', 1 ),
