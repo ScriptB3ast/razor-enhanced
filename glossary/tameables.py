@@ -257,7 +257,7 @@ animals = {
     'triceratops': None, # Not on UO Forever
     'turtleHatchlingDragon': None,
     'wolfDragon': None,
-    'wyrmShadow': None,
+    'shadow wyrm': Animal( 'shadow wyrm', 0x006A, 0x0000, 120, 120, None )
 }
 
 
