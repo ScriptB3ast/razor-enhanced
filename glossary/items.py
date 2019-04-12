@@ -217,6 +217,14 @@ items = {
     'a rune': myItem( 'a rune', 0x483B, 0x0027, 'slayer rune', 1 ),
 
 
+    ### Statuettes ###
+    'dread spider statuette': myItem( 'dread spider statuette', 0x25C4, 0x0000, 'statuette', 1 ),
+    'lich statuette': myItem( 'lich statuette', 0x25A4, 0x0000, 'statuette', 1 ),
+    'orc shaman statuette': myItem( 'orc shaman statuette', 0x25B1, 0x0000, 'statuette', 1 ),
+    'slime statuette': myItem( 'slime statuette', 0x20E8, 0x0000, 'statuette', 1 ),
+    'snow elemental statuette': myItem( 'snow elemental statuette', 0x25DC, 0x0000, 'statuette', 1 ),
+
+
     ### Scrolls ###
     # First Circle
     'Clumsy scroll': myItem( 'Clumsy scroll', 0x1F2E, 0x0000, 'magic scroll', 1 ),
