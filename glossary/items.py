@@ -30,6 +30,20 @@ items = {
     'skull': myItem( 'skull', 0x1AE1, 0x0000, 'body part', 1 ),
 
 
+    ### Clothing ###
+    # Anniversary
+    '6th Year Forever Shirt': myItem( '6th Year Forever Shirt', 0x25EB, 0x0799, 'clothing', 1 ),
+    'UOForever\'s 6th Year Anniversary': myItem( 'UOForever\'s 6th Year Anniversary', 0x2B6E, 0x0000, 'decoration', 1 ),
+
+    # Christmas
+    'jingle bells necklace': myItem( 'jingle bells necklace', 0x4D0A, 0x0501, 'decoration', 1 ),
+
+    'checkered shirt': myItem( 'checkered shirt', 0x25EB, 0x0000, 'clothing', 1 ),
+    'full apron': myItem( 'full apron', 0x153D, 0x0000, 'clothing', 4 ),
+    'gargish necklace': myItem( 'gargish necklace', 0x4D0A, 0x0000, 'clothing', 1 ),
+    'Kiss the Cook apron': myItem( 'Kiss the Cook apron', 0x153D, 0x0844, 'clothing', 4 ),
+
+
     ### Healing ###
     'bandage': myItem( 'bandage', 0x0E21, 0x0000, 'healing', 0.1 ),
     'healingPotion': None,
