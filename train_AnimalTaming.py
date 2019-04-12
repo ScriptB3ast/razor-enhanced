@@ -401,7 +401,8 @@ def TrainAnimalTaming():
                     Journal.SearchByType( 'You must wait a few moments to use another skill.', 'Regular' ) ):
                 tameHandled = True
             elif ( Journal.SearchByType( 'That is too far away.', 'Regular' ) or
-                    Journal.SearchByName( 'You are too far away to continue taming.', animalBeingTamed.Name ) ):
+                    Journal.SearchByName( 'You are too far away to continue taming.', animalBeingTamed.Name ) or
+                    Journal.SearchByName( 'Someone else is already taming this', animalBeingTamed.Name ) ):
                 # Animal moved too far away, set to None so that another animal can be found
                 animalBeingTamed = None
                 timesTried = 0
