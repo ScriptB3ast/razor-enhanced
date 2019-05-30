@@ -17,17 +17,6 @@ class myItem:
         self.weight = weight
 
 items = {
-    ### Generic Items ###
-    'ancient smithing hammer shard': myItem( 'ancient smithing hammer shard', 0x5738, 0x09C2, 'generic', 16 ),
-    'gold coin': myItem( 'gold coin', 0x0EED, 0x0000, 'generic', 0.02 ),
-    'map': myItem( 'map', 0x14EC, 0x0000, 'generic', 1 ),
-    'platinum coin': myItem( 'platinum coin', 0x0EED, 0x047F, 'generic', 0.02 ),
-    'recall rune': myItem( 'recall rune', 0x1F14, 0x0000, 'generic', 1 ),
-    'runebook': myItem( 'runebook', 0x22C5, 0x0000, 'generic', 1 ),
-    'seer\'s powder': myItem( 'seer\'s powder', 0x26B8, 0x0A26, 'generic', 1 ),
-    'translocation powder': myItem( 'translocation powder', 0x26B8, 0x0000, 'generic', 1 ),
-
-
     ### Ores ###
     # Weights are set to None since the weight varies depending on the player's mining skill
     'agapite ore': myItem( 'agapite ore', 0x19B9, 0x097E, 'ore', None ),
