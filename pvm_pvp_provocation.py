@@ -91,7 +91,7 @@ def SelectEnemyToProvo( enemies ):
             for enemy in enemySerials:
                 enemiesAlreadyProvodSerials.append( int( enemy ) )
 
-        enemiesNotYetProvodPythonList = list( filter( lambda enemy: not ( enemy.Serial in enemiesAlreadyProvodSerials ), enemies ) )
+        enemiesNotYetProvodPythonList = list( filter( lambda enemy: enemy.Color == 1157 or not ( enemy.Serial in enemiesAlreadyProvodSerials ), enemies ) )
 
         # We have the Python formatted list, but we need a C# list to pass to Mobiles.Select()
         enemiesNotYetProvodCSharpList = GetEmptyMobileList( Mobiles )
