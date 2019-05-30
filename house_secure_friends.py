@@ -1,0 +1,6 @@
+target = Target.PromptTarget( 'select what you wish to secure and allow friends to access' )
+Player.ChatSay( 58, 'i wish to secure this' )
+Target.WaitForTarget( 2000, True )
+Target.TargetExecute( target )
+Gumps.WaitForGump( 43740233, 2000 )
+Gumps.SendAction( 43740233, 3 )
