@@ -10,6 +10,7 @@ enableSmeltFromPet = True
 
 from Scripts.glossary.items.ores import ores
 from Scripts.glossary.colors import colors
+from Scripts import config
 
 messages = [
     'You smelt the ore removing the impurities and put the metal in your backpack.',
@@ -30,7 +31,7 @@ def SmeltAllInMobile( mobile ):
         while oreStack != None:
             Items.UseItem( oreStack )
 
-            Misc.Pause( 500 )
+            Misc.Pause( config.dragDelayMilliseconds )
 
             oreStack = Items.FindByID( ores[ ore ].itemID, -1, mobile.Backpack.Serial )
 
