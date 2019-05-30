@@ -102,6 +102,7 @@ def PlayerWalk( direction ):
         Player.Walk( direction )
     return
 
+
 def FollowMobile( mobile, maxDistanceToMobile = 2, startPlayerStuckTimer = False ):
     '''
     Uses the X and Y coordinates of the animal and player to follow the animal around the map
