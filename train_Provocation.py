@@ -9,12 +9,12 @@ Description: Uses the instruments from the player's backpack and the selected ta
 
 provocationTimerMilliseconds = 10200
 
-from Scripts.glossary.items import FindInstrument
 from Scripts.utilities.colors import colors
 
 provocationTarget = Target.PromptTarget( 'Select enemy to train on' )
 Mobiles.Message( provocationTarget, colors[ 'cyan' ], 'Selected for provocation training' )
 
+from Scripts.glossary.items.instruments import FindInstrument
 
 def TrainProvocation():
     '''

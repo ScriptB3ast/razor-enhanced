@@ -1,6 +1,4 @@
-from Scripts.glossary.razorEnhancedClassMasterSingleton import MasterSingleton
-
-RazorEnhancedClasses = MasterSingleton()
+from Scripts import config
 
 class myItem:
     name = None
@@ -15,21 +13,6 @@ class myItem:
         self.color = color
         self.category = category
         self.weight = weight
-
-instruments = { itemName: item for itemName, item in items.items() if item != None and item.category == 'instrument' }
-moongates = { itemName: item for itemName, item in items.items() if item != None and item.category == 'moongate' }
-ores = { itemName: item for itemName, item in items.items() if item != None and item.category == 'ore' }
-reagents = { itemName: item for itemName, item in items.items() if item != None and item.category == 'reagent' }
-tools = { itemName: item for itemName, item in items.items() if item != None and item.category == 'tool' }
-
-
-def AddRazorEnhancedClassesToModule( AutoLoot, BandageHeal, BuyAgent, DPSMeter, Dress, Friend,
-        Items, Journal, Misc, Mobiles, Organizer, PathFinding, Player, Restock,
-        Scavenger, SellAgent, Spells, Statics, Target, Timer ):
-    RazorEnhancedClasses.PopulateClasses( AutoLoot, BandageHeal, BuyAgent, DPSMeter, Dress, Friend,
-        Items, Journal, Misc, Mobiles, Organizer, PathFinding, Player, Restock,
-        Scavenger, SellAgent, Spells, Statics, Target, Timer )
-    return
 
 
 def FindItem( itemID, container, color = -1, ignoreContainer = [] ):
@@ -103,8 +86,8 @@ def FindNumberOfItems( itemID, container, color = -1 ):
     return numberOfItems
 
 
-def MoveItem( item, destinationBag, amount = 0 ):
-    RazorEnhancedClasses.Items.Move( item, destinationBag, amount )
+def MoveItem( Items, Misc, item, destinationBag, amount = 0 ):
+    Items.Move( item, destinationBag, amount )
 
     # Wait for the move to complete
-    RazorEnhancedClasses.Misc.Pause( 600 )
+    Misc.Pause( config.dragDelayMilliseconds )
