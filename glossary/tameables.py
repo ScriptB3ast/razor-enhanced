@@ -49,6 +49,7 @@ animals = {
     'crow': Animal( 'crow', 0x0006, 0x0901, 10, 20, None ),
     'finch': Animal( 'finch', 0x0006, 0x0835, 10, 20, None ),
     'hawk': Animal( 'hawk', 0x0006, 0x0835, 10, 20, None ),
+    'kingfisher': Animal( 'kingfisher', 0x0006, 0x083F, 10, 20, None ),
     'lapwing': Animal( 'lapwing', 0x0006, 0x0837, 10, 20, None ),
     'magpie': Animal( 'magpie', 0x0006, 0x0901, 10, 20, None ),
     'nuthatch': Animal( 'nuthatch', 0x0006, 0x0851, 10, 20, None ),
