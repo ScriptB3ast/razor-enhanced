@@ -17,11 +17,6 @@ class myItem:
         self.weight = weight
 
 items = {
-    ### Potions ###
-    'keg of greater strength potions': myItem( 'keg of greater strength potions', 0x1940, 0x03B8, 'potion', 1 ),
-    'bottle of toxic poison': myItem( 'bottle of toxic poison', 0x0EFB, 0x0785, 'potion', 1 ),
-
-
     ### Reagents ###
     'Black Pearl': myItem( 'Black Pearl', 0x0F7A, 0x0000, 'reagent', 0.1 ),
     'Blood Moss': myItem( 'Blood Moss', 0x0F7B, 0x0000, 'reagent', 0.1 ),
