@@ -28,10 +28,6 @@ items = {
     'translocation powder': myItem( 'translocation powder', 0x26B8, 0x0000, 'generic', 1 ),
 
 
-    ### Moongates ###
-    'blue moongate': myItem( 'blue moongate', 0x0F6C, 0x0000, 'moongate', None ),
-
-
     ### Ores ###
     # Weights are set to None since the weight varies depending on the player's mining skill
     'agapite ore': myItem( 'agapite ore', 0x19B9, 0x097E, 'ore', None ),
@@ -303,24 +299,6 @@ def FindNumberOfItems( itemID, container, color = -1 ):
             numberOfItems[ ID ] += numberOfItemsInSubcontainer[ ID ]
 
     return numberOfItems
-
-
-def FindMoongate():
-    '''
-    Finds a moongate that the player can use
-    '''
-    global moongates
-
-    moongateIDs = [ moongates[ moongate ].itemID for moongate in moongates ]
-
-    moongateFilter = Items.Filter()
-    moongateFilter.OnGround = 1
-    moongateFilter.RangeMin = 0
-    moongateFilter.RangeMax = 1
-    moongateFilter.Movable = False
-    moongateFilter.Graphics = List[int]( moongateIDs )
-
-    return Items.ApplyFilter( moongateFilter )
 
 
 def MoveItem( item, destinationBag, amount = 0 ):
