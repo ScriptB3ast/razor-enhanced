@@ -319,13 +319,15 @@ def TrainAnimalTaming():
         maxDistanceToTarget = 5
         if not tameOngoing:
             maxDistanceToTarget = 2
+        #if Player.DistanceTo( animalBeingTamed ) > 12:
+        if Player.DistanceTo( animalBeingTamed ) > 30:
             Misc.SendMessage( 'Animal moved too far away, ignoring for now', 1100  )
             animalBeingTamed = None
             continue
         elif animalBeingTamed != None and Player.DistanceTo( animalBeingTamed ) > maxDistanceToTarget:
             if enableFollowAnimal:
                 Timer.Create( 'catchUpToAnimalTimer', catchUpToAnimalTimerMilliseconds )
-                playerStuck = not FollowMobile( animalBeingTamed, 2, True )
+                playerStuck = not FollowMobile( animalBeingTamed, maxDistanceToTarget, True )
                 if playerStuck:
                     Player.HeadMessage( 1100, 'Player stuck!' )
                     return
