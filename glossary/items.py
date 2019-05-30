@@ -28,20 +28,6 @@ items = {
     'translocation powder': myItem( 'translocation powder', 0x26B8, 0x0000, 'generic', 1 ),
 
 
-    ### Instruments ###
-    'drum': myItem( 'drum', 0x0E9C, 0x0000, 'instrument', None ),
-    'flute': myItem( 'flute', 0x2805, 0x0000, 'instrument', None ),
-    'lute': myItem( 'lute', 0x0EB3, 0x0000, 'instrument', None ),
-
-    # Harps
-    'lap harp': myItem( 'lap harp', 0x0EB2, 0x0000, 'instrument', None ),
-    'standing harp': myItem( 'standing harp', 0x0EB1, 0x0000, 'instrument', None ),
-
-    # Tambourines
-    'tambourine': myItem( 'tambourine', 0x0E9E, 0x0000, 'instrument', None ),
-    'tambourine (red tassle)': myItem( 'tambourine', 0x0E9D, 0x0000, 'instrument', None ),
-
-
     ### Moongates ###
     'blue moongate': myItem( 'blue moongate', 0x0F6C, 0x0000, 'moongate', None ),
 
@@ -317,26 +303,6 @@ def FindNumberOfItems( itemID, container, color = -1 ):
             numberOfItems[ ID ] += numberOfItemsInSubcontainer[ ID ]
 
     return numberOfItems
-
-
-def FindBandage( container ):
-    '''
-    Uses FindItem to look through the player's backpack for a bandage
-    '''
-    global items
-
-    return FindItem( items[ 'bandage' ].itemID, container )
-
-
-def FindInstrument( container ):
-    '''
-    Uses FindItem to look through the player's backpack for an instrument
-    '''
-    global instruments
-
-    instrumentIDs = [ instruments[ instrument ].itemID for instrument in instruments ]
-
-    return FindItem( instrumentIDs, container )
 
 
 def FindMoongate():
