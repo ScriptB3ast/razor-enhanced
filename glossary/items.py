@@ -17,20 +17,6 @@ class myItem:
         self.weight = weight
 
 items = {
-    ### Clothing ###
-    # Anniversary
-    '6th Year Forever Shirt': myItem( '6th Year Forever Shirt', 0x25EB, 0x0799, 'clothing', 1 ),
-    'UOForever\'s 6th Year Anniversary': myItem( 'UOForever\'s 6th Year Anniversary', 0x2B6E, 0x0000, 'decoration', 1 ),
-
-    # Christmas
-    'jingle bells necklace': myItem( 'jingle bells necklace', 0x4D0A, 0x0501, 'decoration', 1 ),
-
-    'checkered shirt': myItem( 'checkered shirt', 0x25EB, 0x0000, 'clothing', 1 ),
-    'full apron': myItem( 'full apron', 0x153D, 0x0000, 'clothing', 4 ),
-    'gargish necklace': myItem( 'gargish necklace', 0x4D0A, 0x0000, 'clothing', 1 ),
-    'Kiss the Cook apron': myItem( 'Kiss the Cook apron', 0x153D, 0x0844, 'clothing', 4 ),
-
-
     ### Containers ###
     'backpack': myItem( 'backpack', 0x0E75, 0x0000, 'container', 1 ),
     'bag': myItem( 'bag', 0x0E76, 0x0000, 'container', 1 ),
