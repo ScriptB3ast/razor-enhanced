@@ -189,7 +189,7 @@ animals = {
 
     # ridgebacks
     'ridgeback': Animal( 'ridgeback', 0x00BB, 0x0000, 100, 110, None ),
-    'ridgebackSavage': Animal( 'savage ridgeback', 0x00BC, 0x0000, 100, 110, None ),
+    'savage ridgeback': Animal( 'savage ridgeback', 0x00BC, 0x0000, 100, 110, None ),
 
     'slith': None,
     'dire wolf': Animal( 'dire wolf', 0x0017, 0x0000, 100, 110, [ 'canine' ] ),
