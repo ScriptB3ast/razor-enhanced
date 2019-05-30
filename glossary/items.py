@@ -28,12 +28,6 @@ items = {
     'translocation powder': myItem( 'translocation powder', 0x26B8, 0x0000, 'generic', 1 ),
 
 
-    ### Healing ###
-    'bandage': myItem( 'bandage', 0x0E21, 0x0000, 'healing', 0.1 ),
-    'healingPotion': None,
-    'greaterHealingPotion': None,
-
-
     ### Ingots ###
     'agapite ingot': myItem( 'agapite ingot', 0x1BF2, 0x097E, 'ingot', 0.1 ),
     'bronze ingot': myItem( 'bronze ingot', 0x1BF2, 0x06D8, 'ingot', 0.1 ),
