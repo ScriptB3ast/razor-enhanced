@@ -17,11 +17,6 @@ class myItem:
         self.weight = weight
 
 items = {
-    ### Food ###
-    'dragon fruit': myItem( 'dragon fruit', 0x0C65, 0x0494, 'food', 1 ),
-    'muffins': myItem( 'muffins', 0x09EB, 0x0000, 'food', 1 ),
-
-
     ### Furniture ###
     'anvil': myItem( 'anvil', 0x0FB0, 0x0000, 'furniture', None ),
     'broken chair': myItem( 'broken chair', 0x0C1B, 0x0000, 'furniture', None ),
