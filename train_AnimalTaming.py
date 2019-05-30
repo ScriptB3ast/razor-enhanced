@@ -32,7 +32,7 @@ minimumTamingDifficulty = 31
 # 'None' = do not auto-heal
 healUsing = 'None'
 # True or False to use Peacemaking if needed
-enablePeacemaking = True
+enablePeacemaking = False
 # True or False to track the animal being tamed
 enableFollowAnimal = True
 # Change depending on the latency to your UO shard
