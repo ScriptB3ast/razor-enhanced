@@ -10,7 +10,13 @@ Description: Tames nearby animals to train Animal Taming to GM
 # Change to the name that you want to rename the tamed animals to
 renameTamedAnimalsTo = 'wardoc'
 # Add any name of pets to ignore
-petsToIgnore = [ renameTamedAnimalsTo, 'Crimson', 'Lizzy' ]
+petsToIgnore = [
+    renameTamedAnimalsTo,
+    # My animals
+    'Magmaguard', 'Saphira',  'Your Worst Nightmare'
+    # Viper's animals
+    'Murder Pony', 'Toothless',
+]
 # Change to the number of followers you'd like to keep.
 # The script will auto-release the most recently tamed animal if the follower number exceeds this number
 # Some animals have a follower count greater than one, which may cause them to be released if this number is not set high enough
