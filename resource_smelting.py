@@ -8,8 +8,8 @@ Description: Smelts all ore into ingots
 
 enableSmeltFromPet = True
 
-from Scripts.utilities.colors import colors
 from Scripts.glossary.items.ores import ores
+from Scripts.glossary.colors import colors
 
 messages = [
     'You smelt the ore removing the impurities and put the metal in your backpack.',

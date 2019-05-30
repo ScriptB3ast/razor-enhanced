@@ -22,7 +22,7 @@ from System.Collections.Generic import List
 from Scripts.glossary.items.instruments import FindInstrument
 from Scripts.glossary.enemies import GetEnemyNotorieties, GetEnemies
 from Scripts.utilities.mobiles import GetEmptyMobileList
-from Scripts.utilities.colors import colors
+from Scripts.glossary.colors import colors
 from Scripts import config
 
 enemiesProvodSharedValue = 'enemiesProvod'

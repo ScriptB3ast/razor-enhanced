@@ -13,7 +13,7 @@ saveReagentsForRecall = True
 numberOfRecallsToSaveFor = 3
 
 from Scripts.glossary.spells import reagents, spells
-from Scripts.utilities import colors
+from Scripts.glossary.colors import colors
 
 mageryTimerMilliseconds = 6500
 

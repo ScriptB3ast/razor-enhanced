@@ -6,7 +6,7 @@ Last Contribution By: TheWarDoctor95 - March 14, 2019
 Description: Uses the selected target to train Animal Lore to its cap
 '''
 
-from Scripts.utilities.colors import colors
+from Scripts.glossary.colors import colors
 
 animalLoreTimerMilliseconds = 1200
 
