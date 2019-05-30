@@ -17,20 +17,6 @@ class myItem:
         self.weight = weight
 
 items = {
-    ### Containers ###
-    'backpack': myItem( 'backpack', 0x0E75, 0x0000, 'container', 1 ),
-    'bag': myItem( 'bag', 0x0E76, 0x0000, 'container', 1 ),
-    'barrel': myItem( 'barrel', 0x0E77, 0x0000, 'container', 1 ),
-    'crate': myItem( 'crate', 0x0E7E, 0x0000, 'container', 1 ),
-    'metal chest (east/west)': myItem( 'metal chest', 0x0E7C, 0x0000, 'container', 1 ),
-    'metal chest (north/south)': myItem( 'metal chest', 0x2DF3, 0x0000, 'container', 1 ),
-    'ornate elven chest': myItem( 'ornate elven chest', 0x0E79, 0x0000, 'container', 1 ),
-    'pouch': myItem( 'pouch', 0x0E79, 0x0000, 'container', 1 ),
-    'trash barrel': myItem( 'trash barrel', 0x0E77, 0x03B2, 'container', 1 ),
-    'wooden box': myItem( 'wooden box', 0x0E7D, 0x0000, 'container', 1 ),
-    'wooden chest': myItem( 'wooden chest', 0x0E43, 0x0000, 'container', 1 ),
-
-
     ### Decoration ###
     # Christmas
     'box of snowdrops (east/west)': myItem( 'box of snowdrops', 0x3325, 0x0000, 'decoration', 1 ),
