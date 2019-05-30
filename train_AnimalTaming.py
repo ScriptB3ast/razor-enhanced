@@ -316,10 +316,9 @@ def TrainAnimalTaming():
                 Mobiles.Message( animalBeingTamed, 90, 'Found animal to tame' )
 
         # Check if animal is close enough to tame
-        maxDistanceToTarget = 3
+        maxDistanceToTarget = 5
         if not tameOngoing:
-            maxDistanceToTarget = 1
-        if Player.DistanceTo( animalBeingTamed ) > 12:
+            maxDistanceToTarget = 2
             Misc.SendMessage( 'Animal moved too far away, ignoring for now', 1100  )
             animalBeingTamed = None
             continue
