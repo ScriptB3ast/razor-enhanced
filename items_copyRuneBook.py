@@ -197,6 +197,9 @@ def CopyRunebook():
                     if not Player.BuffsExist( 'Meditation' ):
                         Player.UseSkill( 'Meditation' )
                     Misc.Pause( 50 )
+    
+    Misc.Pause( config.dragDelayMilliseconds )
+    CopyRunebookName()
                 
     Player.HeadMessage( colors[ 'green' ], 'Done copying runebook!' )
 
