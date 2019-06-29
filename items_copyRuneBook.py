@@ -11,27 +11,15 @@ from Scripts import config
 from Scripts.glossary.colors import colors
 from Scripts.utilities.items import FindNumberOfItems
 
-def CopyRunebook():
-    runebookToCopySerial = Target.PromptTarget( 'Select the runebook to copy from' )
-    runebookToCopy = Items.FindBySerial( runebookToCopySerial )
 def PromptRunebook( promptString ):
     runebookSerial = Target.PromptTarget( promptString )
     runebook = Items.FindBySerial( runebookSerial )
 
-    if runebookToCopy.ItemID != 0x22C5:
     if runebook == None or runebook.ItemID != 0x22C5:
         Player.HeadMessage( colors[ 'red' ], 'That is not a runebook!' )
-        return
-    
-    runebookToPlaceInSerial = Target.PromptTarget( 'Select the runebook to copy to' )
-    runebookToPlaceIn = Items.FindBySerial( runebookToPlaceInSerial )
         return None
     else:
         return runebook
-
-    if runebookToPlaceIn.ItemID != 0x22C5:
-        Player.HeadMessage( colors[ 'red' ], 'That is not a runebook!' )
-        return
 
     # Test if the runebook is locked down or not 
     Journal.Clear()
@@ -136,6 +124,18 @@ def CopyRunebookName():
         Gumps.SendAction( 1431013363, 0 )
         
 
+def CopyRunebook():
+    global runebookToCopy
+    global runebookToPlaceIn
+    
+    runebookToCopy = PromptRunebook( 'Select the runebook to copy from' )
+    if runebookToCopy == None:
+        return
+    
+    runebookToPlaceIn = PromptRunebook( 'Select the runebook to copy to' )
+    if runebookToPlaceIn == None:
+        return
+    
     numberOfRunesToBeMarked = numberOfRunesInOldBook - numberOfRunesInNewBook
 
     # Make sure we have enough runes to be marked
