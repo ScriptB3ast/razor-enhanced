@@ -34,8 +34,6 @@ def PromptRunebook( promptString ):
             runebookMoveable = False
             Target.PromptTarget( 'Select item to recall off of to return to runebook being copied' )
     
-    # Find number of runes in old book
-    Items.UseItem( runebookToCopy )
 def GetNamesOfRunesInBook( runebook ):
     Items.UseItem( runebook )
     
@@ -64,48 +62,23 @@ def GetNamesOfRunesInBook( runebook ):
     endIndexOfDropAndDefault += 2
     runeNames = lineList[ endIndexOfDropAndDefault : ( endIndexOfDropAndDefault + 16 ) ]
     runeNames = [ name for name in runeNames if name != 'Empty' ]
-
-    numberOfRunesInOldBook = len( runeNames )
     
-    # Find number of runes in new book
-    Items.UseItem( runebookToPlaceIn )
-    Misc.Pause( config.dragDelayMilliseconds )
-    Gumps.WaitForGump( 1431013363, 5000 )
-    if Gumps.CurrentGump() != 1431013363:
-        Player.HeadMessage( colors[ 'red' ], 'Too far from runebook to copy' )
     return runeNames
 
-    lineList = Gumps.LastGumpGetLineList()
 
 def GetNumberOfRunesInBook( runebook ):
     return len( GetNamesOfRunesInBook( runebook ) )
     
-    # Remove the default 3 lines from the top of the list
-    lineList = lineList[ 3 : ]
         
-    # Remove the items before the names of the runes
-    endIndexOfDropAndDefault = 0
-    for i in range( 0, len( lineList ) ):
-        if lineList[ i ] == 'Set default' or lineList[ i ] == 'Drop rune':
-            endIndexOfDropAndDefault += 1
-        else:
-            break
 def CopyRunebookName():
     global runebookToCopy
     global runebookToPlaceIn
     
-    # Add two for the charge count and max charge numbers
-    endIndexOfDropAndDefault += 2
-    runeNamesNewBook = lineList[ endIndexOfDropAndDefault : ( endIndexOfDropAndDefault + 16 ) ]
-    runeNamesNewBook = [ name for name in runeNamesNewBook if name != 'Empty' ]
-    numberOfRunesInNewBook = len( runeNamesNewBook )
     Journal.Clear()
     if Gumps.CurrentGump() == 1431013363:
         Gumps.WaitForGump( 1431013363, 1000 )
         Gumps.SendAction( 1431013363, 0 )
     
-    Misc.SendMessage( numberOfRunesInOldBook )
-    Misc.SendMessage( numberOfRunesInNewBook )
     Items.SingleClick( runebookToCopy.Serial )
     Misc.Pause( config.journalEntryDelayMilliseconds )
     runebookName = None
@@ -136,6 +109,12 @@ def CopyRunebook():
     if runebookToPlaceIn == None:
         return
     
+    numberOfRunesInOldBook = GetNumberOfRunesInBook( runebookToCopy )
+    numberOfRunesInNewBook = GetNumberOfRunesInBook( runebookToPlaceIn )
+    runeNames = GetNamesOfRunesInBook( runebookToCopy )
+    
+    Misc.SendMessage( '# of runes to copy: %i' % numberOfRunesInOldBook )
+    Misc.SendMessage( '# of runes already copied: %i' % numberOfRunesInNewBook )
     numberOfRunesToBeMarked = numberOfRunesInOldBook - numberOfRunesInNewBook
 
     # Make sure we have enough runes to be marked
