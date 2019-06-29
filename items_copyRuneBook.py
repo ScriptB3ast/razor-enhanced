@@ -21,18 +21,6 @@ def PromptRunebook( promptString ):
     else:
         return runebook
 
-    # Test if the runebook is locked down or not 
-    Journal.Clear()
-    runebookMoveable = True
-    if runebookToCopy.RootContainer != Player.Serial:
-        Items.Move( runebookToCopy, Player.Backpack, 0 )
-        Misc.Pause( config.dragDelayMilliseconds + 100 ) # plus 100 to be extra safe
-        
-        runebookToCopy = Items.FindBySerial( runebookToCopySerial )
-        
-        if runebookToCopy.RootContainer != Player.Serial:
-            runebookMoveable = False
-            Target.PromptTarget( 'Select item to recall off of to return to runebook being copied' )
     
 def GetNamesOfRunesInBook( runebook ):
     Items.UseItem( runebook )
@@ -109,6 +97,19 @@ def CopyRunebook():
     if runebookToPlaceIn == None:
         return
     
+    # Test if the runebook is locked down or not 
+    Journal.Clear()
+    runebookMoveable = True
+    if runebookToCopy.RootContainer != Player.Serial:
+        Items.Move( runebookToCopy, Player.Backpack, 0 )
+        Misc.Pause( config.dragDelayMilliseconds + 100 ) # plus 100 to be extra safe
+        
+        runebookToCopy = Items.FindBySerial( runebookToCopySerial )
+        
+        if runebookToCopy.RootContainer != Player.Serial:
+            runebookMoveable = False
+            Target.PromptTarget( 'Select item to recall off of to return to runebook being copied' )
+
     numberOfRunesInOldBook = GetNumberOfRunesInBook( runebookToCopy )
     numberOfRunesInNewBook = GetNumberOfRunesInBook( runebookToPlaceIn )
     runeNames = GetNamesOfRunesInBook( runebookToCopy )
