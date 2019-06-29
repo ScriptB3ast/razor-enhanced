@@ -204,7 +204,7 @@ def CopyRunebook():
                     Timer.Create( 'messageCooldown', 2000 )
 
             if Player.Mana < 42: # 42 = 11 for 2 Recalls and 20 for one Mark
-                Player.HeadMessage( colors[ 'cyan' ] 'Meditating' )
+                Player.HeadMessage( colors[ 'cyan' ], 'Meditating' )
                 Player.UseSkill( 'Meditation' )
                 while Player.Mana < ( Player.ManaMax - 3 ):
                     if not Player.BuffsExist( 'Meditation' ):
