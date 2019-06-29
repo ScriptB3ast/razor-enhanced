@@ -1,10 +1,9 @@
 # If copying a locked down book, DO THIS BEFORE STARTING
-#   Mark a rune for a location that you can reach the runebook being copied from AND
-#   where you are close enough to recall off the book
+#   Mark a rune for a location close to runebook being copied
 #
 #   Put this rune into a book for safe keeping (runes aren't blessed, runebooks are)
-#   Set the rune as the default location for the book 
-#   Select the correct book when the target comes up for 'Select item to recall off of to return to runebook being copied' 
+#   Set the rune as the default location for the book
+#   Select the correct book when the target comes up for 'Select item to recall off of to return to runebook being copied'
 
 import re
 from Scripts import config
@@ -100,6 +99,7 @@ def CopyRunebook():
     # Test if the runebook is locked down or not 
     Journal.Clear()
     runebookMoveable = True
+    recallRunebook = None
     if runebookToCopy.RootContainer != Player.Serial:
         Items.Move( runebookToCopy, Player.Backpack, 0 )
         Misc.Pause( config.dragDelayMilliseconds + 100 ) # plus 100 to be extra safe
@@ -108,7 +108,7 @@ def CopyRunebook():
         
         if runebookToCopy.RootContainer != Player.Serial:
             runebookMoveable = False
-            Target.PromptTarget( 'Select item to recall off of to return to runebook being copied' )
+            recallRunebook = Target.PromptTarget( 'Select item to recall off of to return to runebook being copied' )
 
     numberOfRunesInOldBook = GetNumberOfRunesInBook( runebookToCopy )
     numberOfRunesInNewBook = GetNumberOfRunesInBook( runebookToPlaceIn )
@@ -191,9 +191,22 @@ def CopyRunebook():
             while Timer.Check( 'spellCooldown' ):
                 Misc.Pause( 50 )
 
-            if Player.Mana < 90:
+            Spells.CastMagery( 'Recall' )
+            Target.WaitForTarget( 15000, False )
+            Target.TargetExecute( recallRunebook )
+
+            Player.HeadMessage( colors[ 'cyan' ], 'Move within recall range of the runebook being copied' )
+            Timer.Create( 'messageCooldown', 2000 )
+            while not Player.InRangeItem( runebookToCopy, 1 ):
+                Misc.Pause( 100 )
+                if not Timer.Check( 'messageCooldown' ):
+                    Player.HeadMessage( colors[ 'cyan' ], 'Move within recall range of the runebook being copied' )
+                    Timer.Create( 'messageCooldown', 2000 )
+
+            if Player.Mana < 42: # 42 = 11 for 2 Recalls and 20 for one Mark
+                Player.HeadMessage( colors[ 'cyan' ] 'Meditating' )
                 Player.UseSkill( 'Meditation' )
-                while Player.Mana < 90:
+                while Player.Mana < ( Player.ManaMax - 3 ):
                     if not Player.BuffsExist( 'Meditation' ):
                         Player.UseSkill( 'Meditation' )
                     Misc.Pause( 50 )
