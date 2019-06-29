@@ -154,11 +154,21 @@ def CopyRunebook():
         while Timer.Check( 'spellCooldown' ):
             Misc.Pause( 50 )
 
-        Spells.CastMagery( 'Mark' )
+        markScrolls = Items.FindByID( 0x1F59, 0x0000, Player.Backpack.Serial )
+        if markScrolls != None:
+            Items.UseItem( markScrolls )
+            Timer.Create( 'markScrollDragDelay', config.dragDelayMilliseconds )
+        else:
+            Spells.CastMagery( 'Mark' )
+        
         Target.WaitForTarget( 2000, True )
         Target.TargetExecute( runeToMark )
         
-        Timer.Create( 'spellCooldown', 1800 )
+        if markScrolls != None and Timer.Check( 'markScrollDragDelay' ):
+            while Timer.Check( 'markScrollDragDelay' ):
+                Misc.Pause( 20 )
+        elif markScrolls == None:
+            Timer.Create( 'spellCooldown', 1800 )
         
         Items.UseItem( runeToMark )
 
