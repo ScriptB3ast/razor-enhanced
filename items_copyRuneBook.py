@@ -200,4 +200,6 @@ def CopyRunebook():
                 
     Player.HeadMessage( colors[ 'green' ], 'Done copying runebook!' )
 
+runebookToCopy = None
+runebookToPlaceIn = None
 CopyRunebook()
