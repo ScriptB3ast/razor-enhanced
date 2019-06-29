@@ -48,7 +48,12 @@ def PromptRunebook( promptString ):
     
     # Find number of runes in old book
     Items.UseItem( runebookToCopy )
+def GetNamesOfRunesInBook( runebook ):
+    Items.UseItem( runebook )
+    
+    # Pause here since the next part goes pretty quick
     Misc.Pause( config.dragDelayMilliseconds )
+    
     Gumps.WaitForGump( 1431013363, 5000 )
     if Gumps.CurrentGump() != 1431013363:
         Player.HeadMessage( colors[ 'red' ], 'Too far from runebook to copy' )
@@ -80,6 +85,7 @@ def PromptRunebook( promptString ):
     Gumps.WaitForGump( 1431013363, 5000 )
     if Gumps.CurrentGump() != 1431013363:
         Player.HeadMessage( colors[ 'red' ], 'Too far from runebook to copy' )
+    return runeNames
 
     lineList = Gumps.LastGumpGetLineList()
     
