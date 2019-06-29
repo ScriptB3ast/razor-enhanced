@@ -119,19 +119,19 @@ def CopyRunebook():
     numberOfRunesToBeMarked = numberOfRunesInOldBook - numberOfRunesInNewBook
 
     # Make sure we have enough runes to be marked
-    emptyRuneBagSerial = Target.PromptTarget( 'Select bag with empty runes' )
-    emptyRuneBag = Items.FindBySerial( emptyRuneBagSerial )
-    if emptyRuneBag == None or not emptyRuneBag.IsContainer:
+    blankRuneBagSerial = Target.PromptTarget( 'Select bag with empty runes' )
+    blankRuneBag = Items.FindBySerial( blankRuneBagSerial )
+    if blankRuneBag == None or not blankRuneBag.IsContainer:
         Player.HeadMessage( colors[ 'red' ], 'Invalid item selection!' )
         return
         
-    numberOfEmptyRunes = 0
-    for item in emptyRuneBag.Contains:
+    numberOfBlankRunes = 0
+    for item in blankRuneBag.Contains:
         if item.ItemID == 0x1F14:
-            numberOfEmptyRunes += 1
+            numberOfBlankRunes += 1
     
-    if numberOfRunesToBeMarked > numberOfEmptyRunes:
-        Player.HeadMessage( colors[ 'red' ], 'You don\'t have enough empty runes to copy this book! You need %i more runes' % ( numberOfRunesToBeMarked - numberOfEmptyRunes ) )
+    if numberOfRunesToBeMarked > numberOfBlankRunes:
+        Player.HeadMessage( colors[ 'red' ], 'You don\'t have enough blank runes to copy this book! You need %i more runes' % ( numberOfRunesToBeMarked - numberOfblankRunes ) )
         return
     
     # Copy the runebook
@@ -149,7 +149,7 @@ def CopyRunebook():
         Misc.Pause( 100 )
         playerPosition = Player.Position
         
-        runeToMark = Items.FindByID( 0x1F14, -1, emptyRuneBag.Serial )
+        runeToMark = Items.FindByID( 0x1F14, -1, blankRuneBag.Serial )
         
         while Timer.Check( 'spellCooldown' ):
             Misc.Pause( 50 )
