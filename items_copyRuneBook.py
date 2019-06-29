@@ -102,15 +102,40 @@ def GetNumberOfRunesInBook( runebook ):
             endIndexOfDropAndDefault += 1
         else:
             break
+def CopyRunebookName():
+    global runebookToCopy
+    global runebookToPlaceIn
     
     # Add two for the charge count and max charge numbers
     endIndexOfDropAndDefault += 2
     runeNamesNewBook = lineList[ endIndexOfDropAndDefault : ( endIndexOfDropAndDefault + 16 ) ]
     runeNamesNewBook = [ name for name in runeNamesNewBook if name != 'Empty' ]
     numberOfRunesInNewBook = len( runeNamesNewBook )
+    Journal.Clear()
+    if Gumps.CurrentGump() == 1431013363:
+        Gumps.WaitForGump( 1431013363, 1000 )
+        Gumps.SendAction( 1431013363, 0 )
     
     Misc.SendMessage( numberOfRunesInOldBook )
     Misc.SendMessage( numberOfRunesInNewBook )
+    Items.SingleClick( runebookToCopy.Serial )
+    Misc.Pause( config.journalEntryDelayMilliseconds )
+    runebookName = None
+    for line in Journal.GetTextByType( 'Label' ):
+        if '[' in line:
+            bracketIndex = line.find( '[' )
+            runebookName = line[ 0 : ( bracketIndex - 1 ) ]
+                
+    if runebookName != None and runebookName != '':
+        Items.UseItem( runebookToPlaceIn )
+        Gumps.WaitForGump( 1431013363, 10000 )
+        Gumps.SendAction( 1431013363, 1 )
+        Misc.WaitForPrompt( 1000 )
+        Misc.ResponsePrompt( runebookName )
+        Gumps.WaitForGump( 1431013363, 1000 )
+        Gumps.SendAction( 1431013363, 0 )
+        
+
     numberOfRunesToBeMarked = numberOfRunesInOldBook - numberOfRunesInNewBook
 
     # Make sure we have enough runes to be marked
