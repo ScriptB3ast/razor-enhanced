@@ -88,6 +88,9 @@ def GetNamesOfRunesInBook( runebook ):
     return runeNames
 
     lineList = Gumps.LastGumpGetLineList()
+
+def GetNumberOfRunesInBook( runebook ):
+    return len( GetNamesOfRunesInBook( runebook ) )
     
     # Remove the default 3 lines from the top of the list
     lineList = lineList[ 3 : ]
