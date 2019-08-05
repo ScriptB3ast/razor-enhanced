@@ -59,6 +59,7 @@ def GetEnemies( Mobiles, minRange = 0, maxRange = 12, notorieties = GetEnemyNoto
     enemyFilter.RangeMax = maxRange
     enemyFilter.Notorieties = notorieties
     enemyFilter.CheckIgnoreObject = True
+    enemyFilter.Friend = False
     enemies = Mobiles.ApplyFilter( enemyFilter )
 
     if IgnorePartyMembers:
