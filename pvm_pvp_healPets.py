@@ -48,6 +48,15 @@ def TestBandagesApplying():
     return True
 
 
+def WaitForBandagesToApply():
+    bandageDone = False
+    secondsCounter = 0
+    while TestBandagesApplying():
+        Misc.Pause( 1000 )
+        secondsCounter += 1
+        Misc.SendMessage( '%i seconds since bandage started' % ( secondsCounter ) )
+    return
+
 
 def HealPets():
     global petsToCheck
