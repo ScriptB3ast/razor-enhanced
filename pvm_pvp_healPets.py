@@ -61,7 +61,10 @@ def HealPets():
                             line == 'You heal what little damage your patient had.' or
                             line == 'You did not stay close enough to heal your patient!' or
                             line == 'You apply the bandages, but they barely help.' or
-                            line == 'That being is not damaged!' ):
+                            line == 'That being is not damaged!' or
+                            line == 'You fail to resurrect the creature.' or
+                            line == 'You are able to resurrect your patient.' or
+                            line == 'You have cured the target of all poisons!' ):
                         bandageDone = True
                         Misc.Pause( 100 )
                         break
