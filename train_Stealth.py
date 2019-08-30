@@ -35,9 +35,9 @@ while Player.GetRealSkillValue( 'Stealth' ) < Player.GetSkillCap( 'Stealth' ) an
                 Player.Walk( 'North' )
             else:
                 Player.Walk( 'South' )
-            Misc.Pause( 50 )
+            Misc.Pause( 200 )
         moveNorth = not moveNorth
-        Misc.Pause( 200 )
+        Misc.Pause( 500 )
 
     # Pause to ease CPU usage
     Misc.Pause( 500 )
