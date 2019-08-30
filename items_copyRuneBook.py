@@ -28,8 +28,11 @@ def GetNamesOfRunesInBook( runebook ):
     Misc.Pause( config.dragDelayMilliseconds )
 
     Gumps.WaitForGump( 1431013363, 5000 )
-    if Gumps.CurrentGump() != 1431013363:
-        Player.HeadMessage( colors[ 'red' ], 'Too far from runebook to copy' )
+    while Gumps.CurrentGump() != 1431013363:
+        Player.HeadMessage( colors[ 'red' ], 'Too far from runebook to copy, please move closer.' )
+        Misc.Pause( 1000 )
+        Items.UseItem( runebook )
+        Gumps.WaitForGump( 1431013363, 5000 )
 
     runeNames = []
     lineList = Gumps.LastGumpGetLineList()
