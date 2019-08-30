@@ -38,11 +38,11 @@ shields = {
         weight = 7
     ),
     'tear kite shield': myItem(
-    name = 'tear kite shield',
-    itemID = 0x1B79,
-    color = 0x0000,
-    category = 'shield',
-    weight = 5
+        name = 'tear kite shield',
+        itemID = 0x1B79,
+        color = 0x0000,
+        category = 'shield',
+        weight = 5
     ),
 
     # Carpentry
