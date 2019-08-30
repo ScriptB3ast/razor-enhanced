@@ -218,7 +218,7 @@ def CopyRunebook():
                     Misc.Pause( 50 )
 
     Misc.Pause( config.dragDelayMilliseconds )
-    CopyRunebookName()
+    CopyRunebookName( runebookToCopy, runebookToPlaceIn, runebookMoveable )
 
     Player.HeadMessage( colors[ 'green' ], 'Done copying runebook!' )
     Misc.Beep()
