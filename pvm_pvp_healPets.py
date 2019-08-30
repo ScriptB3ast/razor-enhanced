@@ -1,5 +1,6 @@
 from Scripts.utilities.items import FindItem
 from Scripts.glossary.colors import colors
+from System.Collections.Generic import List
 
 if Misc.ShardName() == 'UO Evolution':
     petsToCheck = [
@@ -26,6 +27,38 @@ def HealPets():
         Misc.SendMessage( 'Out of bandages!', colors[ 'red' ] )
         return
     #Misc.SendMessage( 'healing pets' )
+    
+    petFilter = Mobiles.Filter()
+    petFilter.RangeMin = 0
+    petFilter.RangeMax = 1
+    petFilter.IsHuman = 0
+    petFilter.IsGhost = 0
+    petFilter.Friend = 1
+    
+    pets = Mobiles.ApplyFilter( petFilter )
+    
+    if len( pets ) == 0:
+        return
+    
+    petToHeal = Mobiles.Select( pets, 'Weakest' )
+    
+    if petToHeal.Hits == petToHeal.HitsMax:
+        petFilter.Poisoned = 1
+        pets = Mobiles.ApplyFilter( petFilter )
+        if len( pets ) == 0:
+            return
+        else:
+            petToHeal = Mobiles.Select( pets, 'Weakest' )
+    
+    Items.UseItem( bandages )
+    Target.WaitForTarget( 10000, False )
+    Target.TargetExecute( petToHeal )
+    Player.HeadMessage( colors[ 'cyan' ], 'Applying bandage on %s (currently %i%% health)' % ( petToHeal.Name, ( float( petToHeal.Hits ) / float( petToHeal.HitsMax ) * 100 ) ) )
+
+    Misc.Pause( 200 )
+
+    WaitForBandagesToApply()
+    return
 
     for petSerial in petsToCheck:
         pet = Mobiles.FindBySerial( petSerial )
