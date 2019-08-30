@@ -29,6 +29,20 @@ miscellaneous = {
         category = 'generic',
         weight = 1
     ),
+    'molten relic': myItem(
+        name = 'molten relic',
+        itemID = 0x2AA4,
+        color = 0x0550,
+        category = 'generic',
+        weight = 8
+    ),
+    'quicksilver relic': myItem(
+        name = 'quicksilver relic',
+        itemID = 0x2AA4,
+        color = 0x0B8B,
+        category = 'generic',
+        weight = 8
+    ),
     'platinum coin': myItem(
         name = 'platinum coin',
         itemID = 0x0EED,
