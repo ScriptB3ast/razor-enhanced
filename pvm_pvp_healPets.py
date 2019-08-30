@@ -11,8 +11,14 @@ else:
     petsToCheck = [
         0x00048E19, # Saphira
         0x00102404, # Your Darkest Nightmare
+        0x00189E83, # an avian steed
+        0x00302246, # Bid'Daum
         0x0001801E, # Metalicana
         0x0009CA1B, # Toothless
+        0x000EAFDB, # The Darkness
+        0x0025E1FA, # Nocturnal llama
+        0x00064ECB, # Izzo
+        0x00088F42, # Give Me Relic
     ]
 
 #for pet in petsToCheck:
