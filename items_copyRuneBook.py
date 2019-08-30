@@ -137,7 +137,7 @@ def CopyRunebook():
             numberOfBlankRunes += 1
 
     if numberOfRunesToBeMarked > numberOfBlankRunes:
-        Player.HeadMessage( colors[ 'red' ], 'You don\'t have enough blank runes to copy this book! You need %i more runes' % ( numberOfRunesToBeMarked - numberOfblankRunes ) )
+        Player.HeadMessage( colors[ 'red' ], 'You don\'t have enough blank runes to copy this book! You need %i more runes' % ( numberOfRunesToBeMarked - numberOfBlankRunes ) )
         return
 
     # Copy the runebook
