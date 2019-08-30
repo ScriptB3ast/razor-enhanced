@@ -9,13 +9,15 @@ Description: Selects enemies to use the Provocation skill on.
         • If one of the enemies that has already been provo'd dies, the script will detect the death and free up the enemy that is still alive to be provo'd again
     • Priority:
         1. Paragons
-        2. Enemies in War Mode
+        2. Enemies in War Mode (only if in the overworld)
         3. Any other enemy
 '''
 
 ## Script options ##
 # Change depending on whether or not you want a more verbose output on what is being provo'd or ignored by the script
 showTargets = True
+## End of script options ##
+
 
 import re
 from System.Collections.Generic import List
