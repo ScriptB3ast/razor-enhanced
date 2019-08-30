@@ -110,7 +110,7 @@ def CopyRunebook():
         Items.Move( runebookToCopy, Player.Backpack, 0 )
         Misc.Pause( config.dragDelayMilliseconds + 100 ) # plus 100 to be extra safe
 
-        runebookToCopy = Items.FindBySerial( runebookToCopySerial )
+        runebookToCopy = Items.FindBySerial( runebookToCopy.Serial )
 
         if runebookToCopy.RootContainer != Player.Serial:
             runebookMoveable = False
