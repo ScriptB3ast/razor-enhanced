@@ -28,9 +28,9 @@ elif moveToDaviesLocker:
     while map != None:
         DecodeMap( map )
         Gumps.SendAction( 3738072638, 1000 )
-        Target.WaitForTarget( 2000, True )
+        Target.WaitForTarget( 2000, False )
         Target.TargetExecute( map )
-        Target.WaitForTarget( 2000, True )
+        Target.WaitForTarget( 2000, False )
         Target.Cancel()
         Gumps.WaitForGump( 3738072638, 2000 )
         map = Items.FindByID( 0x14EC, 0x0000, Player.Backpack.Serial )
