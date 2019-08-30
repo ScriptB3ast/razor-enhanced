@@ -143,13 +143,14 @@ Items.UseItem( mapChest )
 Misc.Pause( config.dragDelayMilliseconds )
 
 def checkDistance():
-    Timer.Create( 'Distance', 1 )
-    while mapChest.DistanceTo( self ) > 2:
-        if not Timer.Check( 'Distance' ):
-            Player.HeadMessage( msgColor, 'Too Far Away' )
-            Timer.Create( 'Distance', 2500 )
-    Items.UseItem( mapChest )
-    Misc.Pause( dragDelayMilliseconds )
+    if not Player.InRangeItem( mapChest, 2 ):
+        Timer.Create( 'Distance', 1 )
+        while not Player.InRangeItem( mapChest, 2 ):
+            if not Timer.Check( 'Distance' ):
+                Player.HeadMessage( msgColor, 'Too Far Away' )
+                Timer.Create( 'Distance', 2500 )
+        Items.UseItem( mapChest )
+        Misc.Pause( config.dragDelayMilliseconds )
 
 
 def checkWeight():
