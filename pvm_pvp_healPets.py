@@ -18,6 +18,30 @@ else:
 #for pet in petsToCheck:
 #    Timer.Create( 'distanceTimer%s' % pet, 1 )
 
+def TestBandagesApplying():
+    # Fetch the Journal entries (oldest to newest)
+    regularText = Journal.GetTextByType( 'Regular' )
+
+    # Reverse the Journal entries so that we read from newest to oldest
+    regularText.Reverse()
+
+    # Read back until the bandages were started to see if they have finished applying
+    for line in regularText[ 0 : len( regularText ) ]:
+        if line == 'You begin applying the bandages.':
+            break
+        if ( line == 'You finish applying the bandages.' or
+                line == 'You heal what little damage your patient had.' or
+                line == 'You did not stay close enough to heal your patient!' or
+                line == 'You apply the bandages, but they barely help.' or
+                line == 'That being is not damaged!' or
+                line == 'You fail to resurrect the creature.' or
+                line == 'You are able to resurrect your patient.' or
+                line == 'You have cured the target of all poisons!' or
+                line == 'That is too far away.' ):
+            return False
+    return True
+
+
 
 def HealPets():
     global petsToCheck
