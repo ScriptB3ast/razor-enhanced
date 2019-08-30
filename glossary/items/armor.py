@@ -189,10 +189,10 @@ armor = {
         category = 'armor',
         weight = 1
     ),
-    'TODO: studded cap': myItem(
+    'studded cap': myItem(
         name = 'studded gorget',
-        itemID = 0x0000,
-        color = 0x0000,
+        itemID = 0x1DB9,
+        color = 0x05FD,
         category = 'armor',
         weight = None
     ),
