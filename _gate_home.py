@@ -5,6 +5,7 @@ elif Player.Name == 'TheWarPhysician':
     Items.UseItem( 0x419880D0 )
 
 Gumps.WaitForGump( 1431013363, 2000 )
+Misc.Pause( 100 )
 Gumps.SendAction( 1431013363, 6 )
 
 moongates = FindMoongates( Items )
