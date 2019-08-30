@@ -214,6 +214,15 @@ tools = {
         weight = 1
     ),
 
+    # Tailoring
+    'sewing kit': myItem(
+        name = 'sewing kit',
+        itemID = 0x0F9D,
+        color = 0x0000,
+        category = 'tool',
+        weight = 2
+    ),
+
     'cleaver': myItem(
         name = 'cleaver',
         itemID = 0x0EC3,
