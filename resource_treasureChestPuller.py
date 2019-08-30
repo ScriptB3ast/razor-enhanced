@@ -157,6 +157,13 @@ def checkWeight():
         Player.ChatSay(msgColor, 'I am Overweight, stopping')
         Stop
 
+rdaFrag = Items.FindByID( 0x0F21, 0x0489, mapChest.Serial )
+if rdaFrag != None:
+    MoveItem( Items, Misc, rdaFrag, Player.Backpack )
+    if recallHomeScript != None:
+        Misc.ScriptRun( recallHomeScript )
+        Misc.Pause( 50 )
+        Misc.ScriptStop( 'resource_treasureChestPuller.py' )
 
 
 # Grab the gold
