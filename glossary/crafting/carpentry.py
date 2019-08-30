@@ -19,7 +19,7 @@ carpentryTools = [
 
 def FindCarpentryTool( container ):
     '''
-    Searches for a blacksmithing tool in the specified container
+    Searches for a carpentry tool in the specified container
     '''
 
     global carpentryTools
