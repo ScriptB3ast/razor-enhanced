@@ -60,10 +60,7 @@ def GetNumberOfRunesInBook( runebook ):
     return len( GetNamesOfRunesInBook( runebook ) )
 
 
-def CopyRunebookName():
-    global runebookToCopy
-    global runebookToPlaceIn
-
+def CopyRunebookName( runebookToCopy, runebookToPlaceIn, runebookMoveable ):
     Journal.Clear()
     if Gumps.CurrentGump() == 1431013363:
         Gumps.WaitForGump( 1431013363, 1000 )
