@@ -82,6 +82,7 @@ def CopyRunebookName( runebookToCopy, runebookToPlaceIn, runebookMoveable ):
     if runebookName != None and runebookName != '':
         Items.UseItem( runebookToPlaceIn )
         Gumps.WaitForGump( 1431013363, 10000 )
+        Misc.Pause( config.journalEntryDelayMilliseconds )
         Gumps.SendAction( 1431013363, 1 )
         Misc.WaitForPrompt( 1000 )
         Misc.ResponsePrompt( runebookName )
