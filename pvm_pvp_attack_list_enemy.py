@@ -6,6 +6,8 @@ if enemy != None:
         Target.TargetExecute( enemy )
     else:
         Player.Attack( enemy )
+        
+    Target.SetLast( enemy )
 else:
     Player.HeadMessage( colors[ 'red' ], 'No enemies nearby!' )
 
