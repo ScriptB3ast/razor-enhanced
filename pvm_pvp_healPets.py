@@ -15,8 +15,9 @@ else:
         0x0009CA1B, # Toothless
     ]
 
-for pet in petsToCheck:
-    Timer.Create( 'distanceTimer%s' % pet, 1 )
+#for pet in petsToCheck:
+#    Timer.Create( 'distanceTimer%s' % pet, 1 )
+
 
 def HealPets():
     global petsToCheck
