@@ -69,10 +69,15 @@ def CopyRunebookName( runebookToCopy, runebookToPlaceIn, runebookMoveable ):
     Items.SingleClick( runebookToCopy.Serial )
     Misc.Pause( config.journalEntryDelayMilliseconds )
     runebookName = None
-    for line in Journal.GetTextByType( 'Label' ):
-        if '[' in line:
-            bracketIndex = line.find( '[' )
-            runebookName = line[ 0 : ( bracketIndex - 1 ) ]
+    if runebookMoveable:
+        for line in Journal.GetTextByType( 'Label' ):
+            if '[' in line:
+                bracketIndex = line.find( '[' )
+                runebookName = line[ 0 : ( bracketIndex - 1 ) ]
+    else:
+        journalText = Journal.GetTextByType( 'Label' )
+        journalText.Reverse()
+        runebookName = journalText[ 0 ]
 
     if runebookName != None and runebookName != '':
         Items.UseItem( runebookToPlaceIn )
